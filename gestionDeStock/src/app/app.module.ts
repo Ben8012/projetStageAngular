@@ -7,6 +7,10 @@ import { PageLoginComponent } from './pages/page-login/page-login.component';
 import { PageInscriptionComponent } from './pages/page-inscription/page-inscription.component';
 import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
 import { PageStatistiquesComponent } from './pages/page-statistiques/page-statistiques.component';
+import { MenuComponent } from './composants/menu/menu.component';
+import { HeaderComponent } from './composants/header/header.component';
+import { PageArticleComponent } from './pages/articles/page-article/page-article.component';
+import { DetailArticleComponent } from './composants/detail-article/detail-article.component';
 
 @NgModule({
   declarations: [
@@ -15,11 +19,17 @@ import { PageStatistiquesComponent } from './pages/page-statistiques/page-statis
     PageInscriptionComponent,
     PageDashboardComponent,
     PageStatistiquesComponent,
+    MenuComponent,
+    HeaderComponent,
+    PageArticleComponent,
+    DetailArticleComponent,
+   
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
