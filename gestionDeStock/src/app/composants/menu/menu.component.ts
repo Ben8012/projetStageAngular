@@ -46,7 +46,7 @@ export class MenuComponent implements OnInit {
           id :'22',
           icon:'fab fa-stack-overflow',
           titre:'Mouvements du stock',
-          url:'',
+          url:'movestock',
         },
       ]
     },
@@ -60,13 +60,13 @@ export class MenuComponent implements OnInit {
           id :'31',
           icon:'fas fa-users',
           titre:'clients',
-          url:'',
+          url:'clients',
         },
         {
           id :'32',
           icon:'fas fa-shopping-basket',
           titre:'Commandes clients',
-          url:'',
+          url:'commandesclient',
         },
       ]
     },
@@ -80,13 +80,13 @@ export class MenuComponent implements OnInit {
           id :'41',
           icon:'fas fa-truck',
           titre:'Fournisseurs',
-          url:'',
+          url:'fournisseurs',
         },
         {
           id :'42',
           icon:'fas fa-truck',
           titre:'Commandes fournisseurs',
-          url:'',
+          url:'commandesfournisseur',
         },
       ]
     },
