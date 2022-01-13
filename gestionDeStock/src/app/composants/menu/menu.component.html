@@ -12,9 +12,9 @@
       <div id="collapse{{menu.id}}" class="collapse show" [attr.aria-labelledby]="'#menu'+menu.id"  data-parent="#accordion">
        
         <div class="card" >
-          <ul class="list-group list-group-flush" >
-            <li class="list-group-item"*ngFor="let sousMenu of menu.sousMenu">
-              <a href="javascript:void(0);" (click)="navigate(sousMenu.url)" style="text-decoration : None">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"*ngFor="let sousMenu of menu.sousMenu" [ngClass]="{'menu':sousMenu.active,'':!sousMenu.active} ">
+              <a href="javascript:void(0);" (click)="navigate(sousMenu)" style="text-decoration : None">
                 <i class="{{sousMenu.icon}}"></i>&nbsp;
                 {{sousMenu.titre}}
               </a>

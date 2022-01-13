@@ -1,10 +1,13 @@
 <div class="col">
     <div class="row m-3">
         <div class="col-md-8 p-0">
-            <h1>Commande client / fournisseur</h1>
+            <h1>Commande {{origin}}</h1>
         </div>
         <div class="col-md-4" style="text-align: end;">
-            <app-boutton-action></app-boutton-action>
+            <app-boutton-action 
+            [isExporterVisible]="false"
+            (clickEvent)="nouvelleCommande()"
+            ></app-boutton-action>
         </div>
     </div>
     <div class="card mb-2">

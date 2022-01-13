@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-cmd-client-fournisseur',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageCmdClientFournisseurComponent implements OnInit {
 
-  constructor() { }
+  origin='';
+
+  constructor(
+    private router : Router,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe(data =>{
+      this.origin = data.origin;
+    })
   }
 
+  nouvelleCommande() : void{
+    if(this.origin === 'client'){
+      this.router.navigate(['nouvellecommandeclient'])
+
+    }
+    else if(this.origin === 'fournisseur'){
+      this.router.navigate(['nouvellecommandefournisseur'])
+      
+    }
+  }
 }

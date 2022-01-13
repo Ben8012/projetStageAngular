@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-boutton-action',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BouttonActionComponent implements OnInit {
 
+  @Input()
+  isNouveauVisible = true;
+  @Input()
+  isExporterVisible = true;
+  @Input()
+  isImporterVisible = true;
+
+  @Output()
+  clickEvent = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  bouttonNouveauClick():void{
+    this.clickEvent.emit();
   }
 
 }

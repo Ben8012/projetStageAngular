@@ -100,17 +100,19 @@ export class MenuComponent implements OnInit {
           id :'51',
           icon:'fas fa-tools',
           titre:'Catégories',
-          url:'',
+          url:'categories',
         },
         {
           id :'52',
           icon:'fas fa-users',
           titre:'Utilisateurs',
-          url:'',
+          url:'utilisateurs',
         },
       ]
     },
   ]; 
+
+  private lastSelectedMenu: Menu | undefined;
 
   constructor(
     private router : Router
@@ -119,7 +121,12 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  navigate(url? : string): void{
-    this.router.navigate([url]);
+  navigate(menu : Menu): void{
+    if(this.lastSelectedMenu){
+      this.lastSelectedMenu.active =false;
+    }
+    menu.active = true;
+    this.lastSelectedMenu = menu;
+    this.router.navigate([menu.url]);
   }
 }
