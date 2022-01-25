@@ -8,37 +8,42 @@
             <h2> <i class="fas fa-info-circle custom-icon"></i>&nbsp;Information de l'article </h2>
         </div>
         <div class="col md-12">
-            <form>
+            <form [formGroup]="formNouvelArticle">
                 <div class="row mb-3">
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="Code Article">
+                    <input type="text" class="form-control" placeholder="Code Article" formControlName="codeArticle">
                   </div>
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="Désignation">
+                    <input type="text" class="form-control" placeholder="Désignation" formControlName="designation">
                   </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="Prix unitaire HTVA">
+                      <input type="text" class="form-control" placeholder="Prix unitaire HTVA" formControlName="prixHTVA">
                     </div>
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="Taux TVA">
+                      <input type="text" class="form-control" placeholder="Taux TVA" formControlName="tauxTVA">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="Prix unitaire TTC">
+                      <input type="text" class="form-control" placeholder="Prix unitaire TTC" formControlName="prixTTC">
                     </div>
+                    
                     <div class="col">
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Sélectionner une catégorie</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <select class="form-control" id="exampleFormControlSelect1" formControlName="categorieID" >
+                            <option selected>Sélectionner une catégorie</option>
+                            <option *ngFor="let categorie of categories" value={{categorie.id}}>{{categorie.nom}}</option>
+                            
                           </select>
                     </div>
                 </div>
+                <div class="row mb-3">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Copiez l'url de l'image" formControlName="urlImage">
+                  </div>
+                </div>
+                
               </form>
         </div>
     </div>
@@ -47,7 +52,9 @@
             <i class="fas fa-ban"></i>&nbsp;
             Annuler
         </button>
-        <button class="btn btn-primary m-4" (click)="saveClick()">
+        <button class="btn btn-primary m-4" 
+                (click)="saveClick()"
+                [disabled]="formNouvelArticle.invalid">
             <i class="fas fa-save"></i>&nbsp;
             Enregistrer
         </button>

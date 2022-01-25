@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Article } from '../../models/article';
+import { ApiArticleService } from 'src/app/services/api-article.service';
 
 @Component({
   selector: 'app-detail-article',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailArticleComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+   
+  ) { }
 
   ngOnInit(): void {
+   
   }
 
 }

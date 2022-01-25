@@ -4,15 +4,20 @@
             <h2>Nouvelle catégorie </h2>
         </div>
         <div class="col md-12">
-            <form>
+            <form [formGroup]="formNouvelCategorie">
                 <div class="row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Code Catégorie">
+                        <input type="text" class="form-control" placeholder="Nom de la Catégorie" formControlName="nom">
                     </div>
                 </div>  
                 <div class="row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Description">
+                        <input type="text" class="form-control" placeholder="Code Catégorie" formControlName="codeCategorie">
+                    </div>
+                </div>  
+                <div class="row mb-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Description" formControlName="description">
                     </div>
                 </div>            
             </form>
@@ -23,7 +28,9 @@
             <i class="fas fa-ban"></i>&nbsp;
             Annuler
         </button>
-        <button class="btn btn-primary m-4" (click)="saveClick()">
+        <button class="btn btn-primary m-4" 
+                (click)="saveClick()"
+                [disabled]="formNouvelCategorie.invalid">
             <i class="fas fa-save"></i>&nbsp;
             Enregistrer
         </button>

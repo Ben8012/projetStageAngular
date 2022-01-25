@@ -7,11 +7,76 @@
             <app-boutton-action (clickEvent)="nouvelArticle()"></app-boutton-action>
         </div>
     </div>
-    <div class="col m-3">
-        <app-detail-article></app-detail-article>
-        <app-detail-article></app-detail-article>
-        <app-detail-article></app-detail-article>
-        <app-detail-article></app-detail-article>
+    <div class="col m-3" >
+        <div class="row mb-1 mr-0  custom-border">
+            <div class="col-md-2 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Image</div>
+            <div class="col-md-4 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Info</div>
+            <div class="col-md-3 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Categorie</div>
+            <div class="col-md-3 text-bolt text-underline text-center">Actions</div>
+        </div>
+        <div class="row mb-1 mr-0  custom-border" *ngFor="let article of articles">
+            <div class="col-md-2 mb-1 mt-1 custom-border-right text-center">
+                <img [src]="'assets/images/'+article.urlImage" width="100px"/>
+            </div>
+            <div class="col-md-4 custom-border-right mb-1 mt-1">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
+                        <div class="col-md-11">Code article : {{article.codeArticle}}</div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
+                        <div class="col-md-11" >Désignation : {{article.designation}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"><i class="fas fa-dollar-sign custom-icon"></i></div>
+                        <div class="col-md-11">Prix HTVA : {{article.prixHTVA}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"><i class="fas fa-dollar-sign custom-icon"></i></div>
+                        <div class="col-md-11">Prix TTC : {{article.prixTTC}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 custom-border-right mb-1 mt-1">
+               <div class="row">
+                   <div class="col-md-2">
+                       <i class="fas fa-flag-checkered custom-icon"></i>
+                   </div>
+                   <div class="col-md-10">
+                       <div class="row">
+                            <div class="col-md-12">Code catégorie</div>
+                            <div class="col-md-12">Desciption catégorie</div>
+                       </div>
+                   </div>
+               </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row p-0">
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-link " style="text-decoration: none;">
+                            <div> <i class="fas fa-pencil-alt"></i></div>
+                            <div>Modifier</div>
+                        </button>
+                    </div> 
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-link " style="text-decoration: none;">
+                            <div><i class="fas fa-trash-alt"></i></div>
+                            <div>Supprimer</div>
+                        </button>    
+                    </div> 
+                    <div class="col-md-4"> 
+                        <button type="button" class="btn btn-link" style="text-decoration: none;">
+                            <div> <i class="fas fa-list-alt"></i></div>
+                            <div>Détails</div> 
+                        </button>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+
+
     </div>
     <div class="row mb-3" style="text-align: center;">
         <app-pagination></app-pagination>
