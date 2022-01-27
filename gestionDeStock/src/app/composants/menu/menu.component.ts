@@ -53,19 +53,19 @@ export class MenuComponent implements OnInit {
     {
       id :'3',
       icon:'fas fa-users',
-      titre:'Clients',
+      titre:'Préparateurs',
       url:'',
       sousMenu:[
         {
           id :'31',
           icon:'fas fa-users',
-          titre:'clients',
+          titre:'Préparateurs',
           url:'clients',
         },
         {
           id :'32',
           icon:'fas fa-shopping-basket',
-          titre:'Commandes clients',
+          titre:'Commandes préparateurs',
           url:'commandesclient',
         },
       ]
@@ -105,7 +105,7 @@ export class MenuComponent implements OnInit {
         {
           id :'52',
           icon:'fas fa-users',
-          titre:'Utilisateurs',
+          titre:'Clients',
           url:'utilisateurs',
         },
       ]

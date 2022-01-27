@@ -16,7 +16,7 @@
         </div>
         <div class="row mb-1 mr-0  custom-border" *ngFor="let article of articles">
             <div class="col-md-2 mb-1 mt-1 custom-border-right text-center">
-                <img [src]="'assets/images/'+article.urlImage" width="100px"/>
+                <img [src]="'assets/images/'+article.urlImage" width="100px" height="100px"/>
             </div>
             <div class="col-md-4 custom-border-right mb-1 mt-1">
                 <div class="col">
@@ -45,8 +45,9 @@
                    </div>
                    <div class="col-md-10">
                        <div class="row">
-                            <div class="col-md-12">Code catégorie</div>
-                            <div class="col-md-12">Desciption catégorie</div>
+                            <div class="col-md-12">Nom : {{article.categorie.nom}} </div>
+                            <div class="col-md-12">Code : {{article.categorie.codeCategorie}}</div>
+                            <div class="col-md-12">Desciption : {{article.categorie.description}}</div>
                        </div>
                    </div>
                </div>
@@ -73,10 +74,7 @@
                     </div>
                 </div>
             </div>
-        
         </div>
-
-
     </div>
     <div class="row mb-3" style="text-align: center;">
         <app-pagination></app-pagination>

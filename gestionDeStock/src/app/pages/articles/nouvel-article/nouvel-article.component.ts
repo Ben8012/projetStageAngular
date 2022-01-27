@@ -6,6 +6,7 @@ import { Categorie } from 'src/app/models/categories';
 import { ApiArticleService } from 'src/app/services/api-article.service';
 import { ApiCategorieService } from 'src/app/services/api-categorie.service';
 
+
 @Component({
   selector: 'app-nouvel-article',
   templateUrl: './nouvel-article.component.html',
@@ -27,12 +28,12 @@ export class NouvelArticleComponent implements OnInit {
     this.getAllCategories();
 
     this.formNouvelArticle = this.formBuilber.group({
-      codeArticle :['test code article',[Validators.required]],
-      designation :['test designation',[Validators.required]],
-      prixHTVA :[10,[Validators.required]],
+      codeArticle :['test',[Validators.required]],
+      designation :['test',[Validators.required]],
+      prixHTVA :[20,[Validators.required]],
       tauxTVA :[21,[Validators.required]],
-      prixTTC :[15,[Validators.required]],
-      categorieID :[2,[Validators.required]],
+      prixTTC :[30,[Validators.required]],
+      categorieId :[1,[Validators.required]],
       urlImage : ['test url',[Validators.required]]
     })
   }
@@ -49,4 +50,11 @@ export class NouvelArticleComponent implements OnInit {
   getAllCategories(){
     this.apiCategorieService.getAllCategories().subscribe(datas => {this.categories = datas;})
   }
+
+  selectedFile =null;
+
+  onFileSelected(event :any){
+    this.selectedFile = event.target.files[0];
+  }
+
 }

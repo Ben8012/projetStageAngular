@@ -23,4 +23,5 @@ export class ApiCategorieService {
     console.log(addCategorie)
     return this.http.post<Categorie>(apiLink, addCategorie);
   }
+
 }
