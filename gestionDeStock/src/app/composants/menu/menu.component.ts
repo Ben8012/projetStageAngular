@@ -110,6 +110,7 @@ export class MenuComponent implements OnInit {
         },
       ]
     },
+   
   ]; 
 
   private lastSelectedMenu: Menu | undefined;

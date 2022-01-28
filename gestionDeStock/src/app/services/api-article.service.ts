@@ -43,10 +43,4 @@ export class ApiArticleService {
     return this.http.get(apiLink+id);
   }
 
-
-  /// categories ///
-
-  getAllCategories():Observable<Categorie[]>{
-    return this.http.get<Categorie[]>(apiLink+'/categories');
-  }
 }
