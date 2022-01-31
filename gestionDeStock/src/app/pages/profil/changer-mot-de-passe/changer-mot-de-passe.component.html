@@ -12,15 +12,15 @@
         </div>
     </div>
     <div class=" card col-md-7 m-3">
-        <form class="mt-5">
+        <form class="mt-5" [formGroup]="formModifPasswd">
             <div class="form-group m-3">
-              <input type="text" class="form-control" placeholder="Ancien mot de passe">
+              <input type="password" class="form-control" placeholder="Ancien mot de passe" formControlName="oldPasswd">
             </div>
             <div class="form-group m-3">
-              <input type="text" class="form-control" placeholder="Nouveau mot de passe">
+              <input type="password" class="form-control" placeholder="Nouveau mot de passe" formControlName="newPasswd">
             </div>
             <div class="form-group m-3">
-              <input type="text" class="form-control" placeholder="Confirmer mot de passe">
+              <input type="password" class="form-control" placeholder="Confirmer mot de passe" formControlName="confirmNewPasswd">
             </div>
           </form>
           <div class="col" style="text-align: end;">
@@ -28,7 +28,7 @@
                   <i class="fas fa-ban"></i>&nbsp;
                   Annuler
               </button>
-              <button class="btn btn-primary m-4" (click)="saveClick()">
+              <button class="btn btn-primary m-4" (click)="saveClick()"  [disabled]="formModifPasswd.invalid">
                   <i class="fas fa-save"></i>&nbsp;
                   Enregistrer
               </button>

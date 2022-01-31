@@ -32,7 +32,6 @@ export class PageInscriptionComponent implements OnInit {
       codePostal :[1495,[Validators.required]],
       ville :['ma ville',[Validators.required]],
       pays :['mon pays',[Validators.required]],
-      role :['admin',[Validators.required]],
       passwd :['test1234=',[Validators.required]],
       passwdConfirm : ['test1234=',[Validators.required]]
     })

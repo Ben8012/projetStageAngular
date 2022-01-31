@@ -20,23 +20,27 @@
             <tbody>
               <tr>
                 <th scope="row">Nom complet</th>
-                <td>Nom prenom</td>
+                <td>{{user.nom}} {{user.prenom}}</td>
               </tr>
               <tr>
                 <th scope="row">E-mail</th>
-                <td>adresse@mail.com</td>
+                <td>{{user.email}}</td>
               </tr>
               <tr>
                 <th scope="row">Téléphone</th>
-                <td>04681234112</td>
+                <td>{{user.telephone}}</td>
               </tr>
               <tr>
                 <th scope="row">Adresse</th>
-                <td>Adresse , ville , cp</td>
+                <td>{{user.adresse.numero}} {{user.adresse.rue}}, {{user.adresse.codePostal}} {{user.adresse.ville}}</td>
               </tr>
               <tr>
-                <th scope="row">Entreprise</th>
-                <td>Nom entreprise</td>
+                <th scope="row">Date de naissance</th>
+                <td>{{dateNaissance}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Role</th>
+                <td>{{user.role}}</td>
               </tr>
             </tbody>
           </table>

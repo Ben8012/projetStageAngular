@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthenticationRequest } from '../models/auth/authentication-request';
 import { AuthenticationResponse } from '../models/auth/authentication-response';
 import { ChangerMotDePasseUtilisateur } from '../models/changer-mot-de-passe-utilisateur-dto';
+import { UserWithAdresse } from '../models/userWithAdresse';
 
 
 const apiLink="http://localhost:3000/utilisateur"
@@ -24,6 +25,10 @@ export class ApiUtilisateurService {
     return this.http.post<Utilisateur>(apiLink,addUtilisateur )
   }
 
+  updateUtilisateur(id: number,upadateUtilisateur : Utilisateur): Observable<AuthenticationResponse>{
+    return this.http.patch<AuthenticationResponse>(apiLink+'/update/'+id,upadateUtilisateur )
+  }
+ 
   login(login : AuthenticationRequest):Observable<AuthenticationResponse>{
     return this.http.post<AuthenticationResponse>(apiLink+'/login',login)
   }
@@ -32,10 +37,20 @@ export class ApiUtilisateurService {
     return this.http.post<Utilisateur>(apiLink,email);
   }
 
-  changerMotDePasse(changerMotDePasse: ChangerMotDePasseUtilisateur): Observable<ChangerMotDePasseUtilisateur> {
-    return this.http.post<ChangerMotDePasseUtilisateur>(apiLink,changerMotDePasse);
+  changerMotDePasse(id : number,changerMotDePasse: ChangerMotDePasseUtilisateur) {
+    return this.http.patch(apiLink+'/changepasswd/'+id,changerMotDePasse);
   }
 
+  getAllClient():Observable<UserWithAdresse[]>{
+    return this.http.get<UserWithAdresse[]>(apiLink);
+  }
 
+  deleteClient(id : number){
+    console.log('tye1')
+    return this.http.delete(apiLink+'/delete/'+id)
+  }
 
+  getUserById(id : any):Observable<Utilisateur>{
+    return this.http.get<Utilisateur>(apiLink+'/getbyid/'+id)
+  }
 }

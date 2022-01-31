@@ -1,4 +1,8 @@
+import { DateUtils } from "src/app/utils/date.utils";
+import { Adresse } from "../adresse";
+
 export class AuthUser{
+    id: number;
     createdAt: Date;
     dateNaissance: Date;
     email: string;
@@ -9,8 +13,10 @@ export class AuthUser{
     role : string;
     telephone : string;
     updatedAt : Date;
+    adresse : Adresse
 
     constructor(data : any ){
+        this.id = data.id;
         this.createdAt = data.createdAt;
         this.dateNaissance = data.dateNaissance;
         this.email = data.email;
@@ -21,6 +27,7 @@ export class AuthUser{
         this.role = data.role;
         this.telephone = data.telephone;
         this.updatedAt = data.updatedAt;
+        this.adresse = data.adresse;
        
        
     }

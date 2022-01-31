@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailArticleMoveStockComponent } from './composants/detail-article-move-stock/detail-article-move-stock.component';
+import { DetailsClientsFournisseursComponent } from './composants/details-clients-fournisseurs/details-clients-fournisseurs.component';
 import { NouveauClientFournisseurComponent } from './composants/nouveau-client-fournisseur/nouveau-client-fournisseur.component';
 import { NouvelleCmdClientFournisseurComponent } from './composants/nouvelle-cmd-client-fournisseur/nouvelle-cmd-client-fournisseur.component';
 import { NouvelArticleComponent } from './pages/articles/nouvel-article/nouvel-article.component';
@@ -140,6 +141,11 @@ const routes: Routes = [
       {
         path:'modifierprofil', 
         component : NouvelUtilisateurComponent,
+        canActivate : [ApplicationGuardService]
+      },
+      {
+        path:'detailsclient/:id', 
+        component : DetailsClientsFournisseursComponent,
         canActivate : [ApplicationGuardService]
       },
     ]

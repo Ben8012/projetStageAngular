@@ -31,8 +31,14 @@ export class PageArticleComponent implements OnInit {
   }
 
   getAllArticles(){
-    this.apiArticleService.getAllArticle().subscribe(datas => {this.articles = datas;console.log(this.articles);});
-    
+    this.apiArticleService.getAllArticle().subscribe(
+      datas => {
+        this.articles = datas;
+        console.log(this.articles);
+      }, error => {
+
+      }
+    );
   }
 
 }

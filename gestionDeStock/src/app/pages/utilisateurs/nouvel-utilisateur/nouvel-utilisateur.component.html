@@ -8,48 +8,47 @@
             <h2> <i class="fas fa-info-circle custom-icon"></i>&nbsp;Information de l'utilisteur </h2>
         </div>
         <div class="col md-12">
-            <form>
-                <div class="row mb-3">
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="Nom">
-                  </div>
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="Adresse 1">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Prénom">
-                    </div>
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Adresse 2">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="E-mail">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Ville">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Téléphone">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Code postal">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                      &nbsp;
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Pays">
-                    </div>
-                </div>
-              </form>
+          <form [formGroup]="formModifUtil">
+            <div class="mb-3">
+                <input type="text" class="form-control" formControlName="nom">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" formControlName="prenom">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" formControlName="telephone">
+            </div>
+            <div class="mb-3">
+                <input type="date" class="form-control" formControlName="dateNaissance">
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control" formControlName="email">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" formControlName="rue">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" formControlName="numero">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" formControlName="codePostal">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" formControlName="ville">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" formControlName="pays">
+            </div>
+            <div class="mb-3">
+                <select class="form-control" formControlName="role" >
+                    <option selected>{{user.role}}</option>
+                    <option >{{roles.client}}</option>
+                    <option >{{roles.fournisseur}}</option>
+                    <option >{{roles.preparateur}}</option>
+                  </select>
+            </div>
+          
+        </form>
         </div>
     </div>
     <div class="col-md-12" style="text-align: end;">
@@ -57,7 +56,8 @@
             <i class="fas fa-ban"></i>&nbsp;
             Annuler
         </button>
-        <button class="btn btn-primary m-4" (click)="saveClick()">
+        <button class="btn btn-primary m-4" (click)="saveClick()"    type="button" 
+        [disabled]="formModifUtil.invalid">
             <i class="fas fa-save"></i>&nbsp;
             Enregistrer
         </button>
