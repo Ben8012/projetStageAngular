@@ -1,31 +1,32 @@
-<div class="container my-container">
-    <div class="card justify-content-md-center">
-        <div class="card-header text-center">
-            <h3>Se connecter</h3>
-          </div>
-        <div class="card-body">
-            <form [formGroup]="formConnexion">
-                <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="E-mail" formControlName="email">
-                </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control"  placeholder="mot de passe" formControlName="passwd">
-                </div>
-                <div class="mb-3 d-flex justify-content-between">
-                    <a [routerLink]="['/inscrire']"  class="btn btn-link">S'inscrire</a>
-                    <button 
-                    (click)="login()"
-                    type="button" 
-                    class="btn btn-primary"
-                    [disabled]="formConnexion.invalid">
-                        <i class="fas fa-check"></i> Se connecter
-                    </button>
-                  
-                </div>
-            </form>
-            
-        </div>
-    </div>
+
+<div class ="login-page">
+<main class="form-signin text-center">
+    <form [formGroup]="formConnexion">
+      <img class="mb-4" src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal">Se connecter</h1>
+  
+      <div class="form-floating">
+        <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="E-mail">
+        <label for="floatingInput">E-mail</label>
+      </div>
+      <div class="form-floating">
+        <input formControlName="passwd" type="password" class="form-control" id="floatingPassword" placeholder="Mot de passe">
+        <label for="floatingPassword">Mot de passe</label>
+      </div>
+  
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Se souvenir de moi
+        </label>
+      </div>
+      <button 
+        (click)="login()"
+        [disabled]="formConnexion.invalid"
+        class="w-100 btn btn-lg btn-primary" 
+        type="submit">
+        Se connecter</button><br><br>
+      <button [routerLink]="['/inscrire']" class="w-100 btn btn-lg btn-light" type="submit">S'inscrire</button>
+    </form>
+  </main>
 </div>
-   
 

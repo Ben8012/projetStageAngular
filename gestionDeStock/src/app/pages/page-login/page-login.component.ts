@@ -26,8 +26,8 @@ export class PageLoginComponent implements OnInit {
 
     this.formConnexion = this.formBuilber.group({
       
-      email :['benja@mail.com',[Validators.required]],
-      passwd :['test1234=',[Validators.required]],
+      email :['loic@mail.com',[Validators.required]],
+      passwd :['test',[Validators.required]],
      
     })
   }
