@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageClientComponent } from './page-client.component';
+import { PageClientComponent } from './page-preparateur.component';
 
 describe('PageClientComponent', () => {
   let component: PageClientComponent;

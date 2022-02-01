@@ -8,7 +8,7 @@ import { NouvelArticleComponent } from './pages/articles/nouvel-article/nouvel-a
 import { PageArticleComponent } from './pages/articles/page-article/page-article.component';
 import { NouvelleCategorieComponent } from './pages/categories/nouvelle-categorie/nouvelle-categorie.component';
 import { PageCategorieComponent } from './pages/categories/page-categorie/page-categorie.component';
-import { PageClientComponent } from './pages/client/page-client/page-client.component';
+import { PageClientComponent } from './pages/page-preparateur/page-client/page-preparateur.component';
 import { PageFournisseursComponent } from './pages/fournisseurs/page-fournisseurs/page-fournisseurs.component';
 import { PageMovestockComponent } from './pages/movstock/page-movestock/page-movestock.component';
 import { PageCmdClientFournisseurComponent } from './pages/page-cmd-client-fournisseur/page-cmd-client-fournisseur.component';
@@ -51,12 +51,12 @@ const routes: Routes = [
         canActivate : [ApplicationGuardService]
       },
       {
-        path:'clients', 
+        path:'preparateurs', 
         component : PageClientComponent,
         canActivate : [ApplicationGuardService]
       },
       {
-        path:'nouveauclient', 
+        path:'nouveauclient/:id', 
         component : NouveauClientFournisseurComponent,
         canActivate : [ApplicationGuardService],
         data:{
@@ -85,7 +85,7 @@ const routes: Routes = [
         canActivate : [ApplicationGuardService]
       },
       {
-        path:'nouveaufournisseur',
+        path:'nouveaufournisseur/:id',
         component : NouveauClientFournisseurComponent,
         canActivate : [ApplicationGuardService],
         data:{

@@ -14,6 +14,7 @@ export class Utilisateur{
     codePostal: number;
     ville: string;
     pays: string;
+    societe : string
 
     constructor(data : any ){
         this.id = data.id;
@@ -29,6 +30,7 @@ export class Utilisateur{
         this.codePostal = data.codePostal;
         this.ville = data.ville;
         this.pays = data.rue;
+        this.societe = data.societe
     }
 }
 

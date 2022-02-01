@@ -3,18 +3,31 @@
         <div class="col-md-8 p-0">
             <h1>Liste des articles</h1>
         </div>
-        <div class="col-md-4" style="text-align: end;">
-            <app-boutton-action (clickEvent)="nouvelArticle()"></app-boutton-action>
+        <div class="col-md-4 " style="text-align: end;" >
+            <button type="button" class="btn btn-primary" (click)="nouvelArticle()">
+                <i class="fas fa-plus"></i>&nbsp;
+                Nouveau
+            </button>
         </div>
     </div>
     <div class="col m-3" >
+        <div class="col-md-12  mb-4 mr-0">
+           
+                <h3 class="text-center">Sélectionner une catégorie</h3>
+                <select  class="form-control " [(ngModel)]="categorieValue" (ngModelChange)="getCat(categorieValue)" >
+                    <option *ngFor="let categorie of categories" [ngValue]="categorie">
+                        {{categorie.nom}}
+                    </option>
+                </select>
+               
+        </div>
         <div class="row mb-1 mr-0  custom-border">
             <div class="col-md-2 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Image</div>
             <div class="col-md-4 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Info</div>
             <div class="col-md-3 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Categorie</div>
             <div class="col-md-3 text-bolt text-underline text-center">Actions</div>
         </div>
-        <div class="row mb-1 mr-0  custom-border" *ngFor="let article of articles">
+        <div class="row mb-1 mr-0  custom-border" *ngFor="let article of newArticles">
             <div class="col-md-2 mb-1 mt-1 custom-border-right text-center">
                 <img [src]="'assets/images/'+article.urlImage" width="100px" height="100px"/>
             </div>

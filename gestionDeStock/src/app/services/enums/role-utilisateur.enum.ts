@@ -1,5 +1,6 @@
 export enum RoleUtilisateurEnum {
     client = 'client',
     fournisseur ='fournisseur',
-    preparateur = 'préparateur'
+    preparateur = 'préparateur',
+    admin ='admin'
   }

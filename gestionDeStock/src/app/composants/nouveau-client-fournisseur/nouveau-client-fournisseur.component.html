@@ -5,48 +5,57 @@
     <hr>
     <div class="col-md-12 p-3">
         <div class="col-md-12 mb-3 ">
-            <h2> <i class="fas fa-info-circle custom-icon"></i>&nbsp;Information du {{origin}} </h2>
+            <h2> <i class="fas fa-info-circle custom-icon"></i>&nbsp;Information du {{nom}}
+              </h2>
         </div>
         <div class="col md-12">
-            <form>
+            <form [formGroup]="formNouveauFournisseur">
                 <div class="row mb-3">
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="Nom">
+                    <input type="text" class="form-control" placeholder="Nom" formControlName="nom">
                   </div>
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="Adresse 1">
+                    <input type="text" class="form-control" placeholder="Rue" formControlName="rue">
                   </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="Prénom">
+                      <input type="text" class="form-control" placeholder="Prénom" formControlName="prenom">
                     </div>
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="Adresse 2">
+                      <input type="text" class="form-control" placeholder="Numero" formControlName="numero">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="E-mail">
+                      <input type="text" class="form-control" placeholder="E-mail" formControlName="email">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Ville">
+                        <input type="text" class="form-control" placeholder="Ville" formControlName="ville">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="Téléphone">
+                      <input type="text" class="form-control" placeholder="Téléphone" formControlName="telephone">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Code postal">
+                        <input type="text" class="form-control" placeholder="Code postal" formControlName="codePostal">
                     </div>
                 </div>
                 <div class="row mb-3">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Date de naissance" formControlName="dateNaissance">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Pays" formControlName="pays">
+                  </div>
+                </div>
+                <div *ngIf="nom ==='fournisseur' " class="row mb-3">
                     <div class="col">
                       &nbsp;
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Pays">
+                        <input type="text" class="form-control" placeholder="Société" formControlName="societe">
                     </div>
                 </div>
               </form>
@@ -57,7 +66,9 @@
             <i class="fas fa-ban"></i>&nbsp;
             Annuler
         </button>
-        <button class="btn btn-primary m-4" (click)="saveClick()">
+        <button class="btn btn-primary m-4" 
+                (click)="saveClick()"
+                [disabled]="formNouveauFournisseur.invalid">
             <i class="fas fa-save"></i>&nbsp;
             Enregistrer
         </button>

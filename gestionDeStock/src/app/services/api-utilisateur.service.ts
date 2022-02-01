@@ -25,6 +25,10 @@ export class ApiUtilisateurService {
     return this.http.post<Utilisateur>(apiLink,addUtilisateur )
   }
 
+  addFournisseur(addFournisseur : Utilisateur){
+    return this.http.post(apiLink+'/addfournisseur',addFournisseur)
+  }
+
   updateUtilisateur(id: number,upadateUtilisateur : Utilisateur): Observable<AuthenticationResponse>{
     return this.http.patch<AuthenticationResponse>(apiLink+'/update/'+id,upadateUtilisateur )
   }
@@ -42,7 +46,15 @@ export class ApiUtilisateurService {
   }
 
   getAllClient():Observable<UserWithAdresse[]>{
-    return this.http.get<UserWithAdresse[]>(apiLink);
+    return this.http.get<UserWithAdresse[]>(apiLink+'/clients');
+  }
+
+  getAllFournisseurs():Observable<UserWithAdresse[]>{
+    return this.http.get<UserWithAdresse[]>(apiLink+'/fournisseurs');
+  }
+
+  getAllPreparateurs():Observable<UserWithAdresse[]>{
+    return this.http.get<UserWithAdresse[]>(apiLink+'/preparateurs');
   }
 
   deleteClient(id : number){
@@ -52,5 +64,9 @@ export class ApiUtilisateurService {
 
   getUserById(id : any):Observable<Utilisateur>{
     return this.http.get<Utilisateur>(apiLink+'/getbyid/'+id)
+  }
+
+  changeRole(id : number, changeRole : any){
+    return this.http.patch(apiLink+'/changerole/'+id,changeRole)
   }
 }

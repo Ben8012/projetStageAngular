@@ -3,79 +3,143 @@
         <div class="col-md-8 p-0">
             <h1>Liste des clients</h1>
         </div>
-        <div class="col-md-4" style="text-align: end;">
+        <!-- <div class="col-md-4" style="text-align: end;">
             <app-boutton-action (clickEvent)="nouveauUtilisateur()"></app-boutton-action>
-        </div>
+        </div> -->
     </div>
-    <div class="col m-3">
-        
-        
-        <div class="row mb-1 mr-0  custom-border" *ngFor="let client of allClients">
-            <div class="col-md-2 mb-1 mt-1">
-                <div class="custom-border-right" style="text-align: center;">
-                    <img src="assets/images/client.jpg" width="100px"/>
+    <div class="card mb-2">
+        <div class="col m-3">
+            <div *ngFor="let client of allClients" >
+                <div class="accordion" id="accordion">
+                    <div class="card-header" id="client{{client.id}}"></div>
+                    <button class="btn btn-link btn-block col-md-12" 
+                            style="text-decoration: none;" 
+                            type="button" 
+                            data-toggle="collapse" 
+                            [attr.data-target]="'#collapse'+client.id" 
+                            aria-expanded="true" 
+                            aria-controls="collapseOne">
+                            
+                        <div class="row mb-1 mr-0  custom-border" >
+                            <div class="col-md-2 mb-1 mt-1">
+                                <div class="custom-border-right" style="text-align: center;">
+                                    <img src="assets/images/client.jpg" width="100px"/>
+                                </div>
+                            </div>
+                            <div class="col-md-4 custom-border-right mb-1 mt-1">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
+                                        <div class="col-md-11">{{client.nom}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
+                                        <div class="col-md-11" >{{client.prenom}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1"><i class="fas fa-envelope-square"></i></div>
+                                        <div class="col-md-11">{{client.email}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 custom-border-right mb-1 mt-1">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-md-12"><i class="fas fa-home custom-icon"></i>&nbsp;{{client.adresse.rue}} {{client.adresse.numero}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12"><i class="fas fa-map-marker-alt custom-icon"></i>&nbsp;{{client.adresse.codePostal}} {{client.adresse.ville}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12"><i class="fas fa-globe-europe custom-icon"></i>&nbsp;{{client.adresse.pays}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="row" >
+                                    <div class="col-md-12 text-center">
+                                        <button type="button" class="btn btn-link " (click)="deleteClient(client.id)" style="text-decoration: none;color: red;">
+                                            <div><i class="fas fa-trash-alt"></i></div>
+                                            <div>Supprimer</div>
+                                        </button>    
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                
+                    </button>   
                 </div>
-            </div>
-            <div class="col-md-4 custom-border-right mb-1 mt-1">
-                <div class="col">
-                    <div class="row">
-                        <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
-                        <div class="col-md-11">{{client.nom}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
-                        <div class="col-md-11" >{{client.prenom}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1"><i class="fas fa-phone-alt custom-icon"></i></div>
-                        <div class="col-md-11">{{client.telephone}}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 custom-border-right mb-1 mt-1">
-                <div class="col">
-                    <div class="row">
-                        <div class="col-md-12"><i class="fas fa-home custom-icon"></i>&nbsp;{{client.adresse.rue}} {{client.adresse.numero}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12"><i class="fas fa-map-marker-alt custom-icon"></i>&nbsp;{{client.adresse.codePostal}} {{client.adresse.ville}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12"><i class="fas fa-globe-europe custom-icon"></i>&nbsp;{{client.adresse.pays}}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 ">
-                <div class="row" >
-                    <!-- <div class="col-md-4">
-                        <button type="button" class="btn btn-link " style="text-decoration: none;">
-                            <div> <i class="fas fa-pencil-alt"></i></div>
-                            <div>Modifier</div>
-                        </button>
-                    </div>  -->
-                    <div class="col-md-6 text-center">
-                        <button type="button" class="btn btn-link " (click)="deleteClient(client.id)" style="text-decoration: none;color: red;">
-                            <div><i class="fas fa-trash-alt"></i></div>
-                            <div>Supprimer</div>
-                        </button>    
-                    </div> 
-                    <div class="col-md-6 text-center"> 
-                        <button type="button" class="btn btn-link" (click)="detailClient(client.id)" style="text-decoration: none;">
-                            <div> <i class="fas fa-list-alt"></i></div>
-                            <div>Détails</div> 
-                        </button>
-                    </div>
-                </div>
-            </div>
-        
-        </div>
-        
-        
+         
 
+                <div id="collapse{{client.id}}" 
+                    class="collapse" 
+                    [attr.aria-labelledby]="'#client'+client.id" 
+                    data-parent="#accordion" 
+                    style="max-height: 300px; overflow-y:scroll;">
+                    <div class="card-body">
+                    
+                        <div class="row mb-1 mr-0  custom-border">
+                            <div class="col-md-4 custom-border-right mb-1 mt-1">
+                                <div class="col-md-12 text-center">
+                                    <h5>Téléphone</h5>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <i class="fas fa-phone-alt custom-icon"></i> {{client.telephone}}
+                                </div>
+                            </div>
+                            <div class="col-md-4 custom-border-right mb-1 mt-1">
+                                <div class="col-md-12 text-center">
+                                    <h5>Date de naissance</h5>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <i class="far fa-calendar-alt custom-icon"></i>&nbsp;{{client.dateNaissance}}
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4  mb-1 mt-1">
+                                <div class="col-md-12 text-center">
+                                    <i class="fas fa-user-tag custom-icon"></i>&nbsp;{{client.role}}
+                                </div>
+                            </div> -->
 
+                            <div class="col-md-4  mb-1 mt-1">
+                                <div class="col-md-12 text-center">
+                                    <h5>Modifiez le role</h5>
+                                </div>
+                                <div class="row mb-2">
+                                    
+                                        <form [formGroup]="formModifRole" class=" col-md-8">     
+                                            <select class="form-control"  formControlName="role" >
+                                                <option selected class="text-center">{{client.role}}</option>
+                                                <option class="text-center" *ngIf="client.role != 'client'" >{{roles.client}}</option>
+                                                <option class="text-center" *ngIf="client.role != 'fournisseur'">{{roles.fournisseur}}</option>
+                                                <option class="text-center" *ngIf="client.role != 'preparateur'">{{roles.preparateur}}</option>
+                                                <option class="text-center" *ngIf="client.role != 'admin'">{{roles.admin}}</option>
+                                            </select>
+                                            
+                                        </form>
+
+                                        <div class="col-md-4 text-center">
+                                            <input type="button" 
+                                                    class="btn btn-primary text-center" 
+                                                    (click)="modifRole(client.id)" 
+                                                    value="Validez"
+                                                    [disabled]="formModifRole.invalid">
+                                        </div>
+                                   
+                                    
+                                </div>
+                                    
+                                
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+        </div> 
+    </div>
 
     </div>
     <div class="row mb-3" style="text-align: center;">
         <app-pagination></app-pagination>
     </div>
-</div>
+
