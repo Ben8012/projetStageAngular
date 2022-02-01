@@ -1,4 +1,27 @@
-.my-container{
-    margin-top:200px;
-    max-width: 500px ;
+.login-page{
+    padding-top:15px;
 }
+
+
+.form-signin input{
+    margin-bottom: 0px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  
+.form-signin input {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .first-one{
+    border-radius: .25rem !important;
+  }
+
+  .last-one{
+    border-bottom-right-radius: .25rem !important;
+    border-bottom-left-radius: .25rem !important;
+    margin-bottom:15px !important;
+  }

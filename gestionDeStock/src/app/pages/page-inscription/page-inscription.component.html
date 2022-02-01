@@ -1,41 +1,54 @@
-<div class="container my-container">
-    <div class="card justify-content-md-center">
-        <div class="card-header text-center">
-            <h3>S'inscrire</h3>
+
+
+
+<div class ="login-page">
+    <main class="form-signin text-center">
+        <form  [formGroup]="formInscription">
+          <img class="mb-4" src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+          <h1 class="h3 mb-3 fw-normal">S'inscrire</h1>
+      
+          <div class="form-floating">
+            <input  type="text" class="form-control first-one" id="floatingInput" placeholder="Nom" formControlName="nom">
+            <label for="floatingInput">Nom</label>
           </div>
-        <div class="card-body">
-            <form [formGroup]="formInscription">
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Nom" formControlName="nom">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Prénom" formControlName="prenom">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Téléphone" formControlName="telephone">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Date de naissance" formControlName="dateNaissance">
-                </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="E-mail" formControlName="email">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Rue" formControlName="rue">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Numero" formControlName="numero">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Code Postal" formControlName="codePostal">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Ville" formControlName="ville">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Pays" formControlName="pays">
-                </div>
-                <!-- <div class="mb-3">
+          <div class="form-floating">
+            <input  type="text" class="form-control" id="floatingInput" placeholder="Prénom" formControlName="prenom">
+            <label for="floatingPassword">Prénom</label>
+          </div>
+          <div class="form-floating">
+            <input  type="text" class="form-control" id="floatingInput" placeholder="Téléphone" formControlName="telephone">
+            <label for="floatingInput">Téléphone</label>
+          </div>
+          <div class="form-floating">
+            <input  type="text" class="form-control" id="floatingInput" placeholder="Date de naissance"formControlName="dateNaissance">
+            <label for="floatingInput">Date de naissance</label>
+          </div>
+          <div class="form-floating">
+            <input  type="text" class="form-control" id="floatingInput" placeholder="E-mail" formControlName="email">
+            <label for="floatingInput">E-mail</label>
+          </div>
+          <div class="form-floating">
+            <input  type="text" class="form-control" id="floatingInput" placeholder="Rue" formControlName="rue">
+            <label for="floatingInput">Rue</label>
+          </div>
+          <div class="form-floating">
+            <input  type="text" class="form-control" id="floatingInput" placeholder="Numero" formControlName="numero">
+            <label for="floatingInput">Numero</label>
+          </div>
+          <div class="form-floating">
+            <input  type="text" class="form-control" id="floatingInput" placeholder="Code Postal" formControlName="codePostal">
+            <label for="floatingInput">Code Postal</label>
+          </div>
+          <div class="form-floating">
+            <input  type="text" class="form-control" id="floatingInput" placeholder="Ville" formControlName="ville">
+            <label for="floatingInput">Ville</label>
+          </div>
+          <div class="form-floating">
+            <input  type="text" class="form-control" id="floatingInput" placeholder="Pays" formControlName="pays">
+            <label for="floatingInput">Pays</label>
+          </div>
+
+                          <!-- <div class="mb-3">
                     <select class="form-control" id="exampleFormControlSelect1" formControlName="role" >
                         <option selected>Sélectionner votre role</option>
                         <option >{{roles.client}}</option>
@@ -43,27 +56,25 @@
                         <option >{{roles.preparateur}}</option>
                       </select>
                 </div> -->
-                <div class="mb-3">
-                    <input type="password" class="form-control" placeholder="Mot de passe" formControlName="passwd">
-                </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control" placeholder="Confirmer mot de passe" formControlName="passwdConfirm">
-                </div>
-               
-                <div class="mb-3 d-flex justify-content-between">
-                    <a [routerLink]="['/login']" type="button" class="btn btn-link">Se connecter</a>
-                    <button class="btn btn-primary"
-                            (click)="register()" 
-                            type="button" 
-                            [disabled]="formInscription.invalid">
-                        <i class="fas fa-check"></i> S'inscrire
-                    </button>
-                  
-                </div>
-            </form>
-           
-        </div>
+
+
+          <div class="form-floating">
+            <input  type="password" class="form-control" id="floatingInput" placeholder="Mot de passe" formControlName="passwd">
+            <label for="floatingInput">Mot de passe</label>
+          </div>
+          <div class="form-floating">
+            <input  type="password" class="form-control last-one" id="floatingInput" placeholder="Confirmer mot de passe" formControlName="passwdConfirm">
+            <label for="floatingInput">Confirmer mot de passe</label>
+          </div>
+
+            <div class="d-grid gap-2 d-md-block">
+                <button (click)="register()" [disabled]="formInscription.invalid" class="btn  btn-primary" type="button">S'inscrire</button>&nbsp;
+                <button [routerLink]="['/login']" class="btn btn-outline-secondary" type="button">Se connecter</button>
+            </div>
+        </form>
+      </main>
     </div>
-</div>
+    
+    
    
 
