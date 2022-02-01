@@ -60,13 +60,13 @@ export class MenuComponent implements OnInit {
           id :'31',
           icon:'fas fa-users',
           titre:'Préparateurs',
-          url:'clients',
+          url:'preparateurs',
         },
         {
           id :'32',
           icon:'fas fa-shopping-basket',
           titre:'Commandes préparateurs',
-          url:'commandesclient',
+          url:'commandespreparateur',
         },
       ]
     },
@@ -92,24 +92,39 @@ export class MenuComponent implements OnInit {
     },
     {
       id :'5',
-      icon:'fas fa-cogs',
-      titre:'Parametrage',
+      icon:'fas fa-users',
+      titre:'Clients',
       url:'',
       sousMenu:[
         {
           id :'51',
-          icon:'fas fa-tools',
-          titre:'Catégories',
-          url:'categories',
-        },
-        {
-          id :'52',
           icon:'fas fa-users',
           titre:'Clients',
           url:'utilisateurs',
         },
+        {
+          id :'52',
+          icon:'fas fa-shopping-basket',
+          titre:'Commandes clients',
+          url:'',
+        },
       ]
     },
+    {
+      id :'6',
+      icon:'fas fa-tools',
+      titre:'Catégories',
+      url:'',
+      sousMenu:[
+        {  
+        id :'60',
+        icon:'fas fa-tools',
+        titre:'Catégories',
+        url:'categories',
+        }
+      
+      ]
+    }
    
   ]; 
 

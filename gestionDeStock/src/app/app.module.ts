@@ -18,7 +18,7 @@ import { PageMovestockComponent } from './pages/movstock/page-movestock/page-mov
 import { DetailArticleMoveStockComponent } from './composants/detail-article-move-stock/detail-article-move-stock.component';
 import { DetailMoveStockComponent } from './composants/detail-move-stock/detail-move-stock.component';
 import { DetailsClientsFournisseursComponent } from './composants/details-clients-fournisseurs/details-clients-fournisseurs.component';
-import { PageClientComponent } from './pages/client/page-client/page-client.component';
+import { PageClientComponent } from './pages/page-preparateur/page-client/page-preparateur.component';
 import { PageFournisseursComponent } from './pages/fournisseurs/page-fournisseurs/page-fournisseurs.component';
 import { NouveauClientFournisseurComponent } from './composants/nouveau-client-fournisseur/nouveau-client-fournisseur.component';
 import { DetailsCmdClientFournisseurComponent } from './composants/details-cmd-client-fournisseur/details-cmd-client-fournisseur.component';

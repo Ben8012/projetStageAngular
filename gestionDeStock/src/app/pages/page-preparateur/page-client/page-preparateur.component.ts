@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserWithAdresse } from 'src/app/models/userWithAdresse';
 import { ApiUtilisateurService } from 'src/app/services/api-utilisateur.service';
 import { RoleUtilisateurEnum } from 'src/app/services/enums/role-utilisateur.enum';
 
 @Component({
-  selector: 'app-page-fournisseurs',
-  templateUrl: './page-fournisseurs.component.html',
-  styleUrls: ['./page-fournisseurs.component.scss']
+  selector: 'app-page-preparateur',
+  templateUrl: './page-preparateur.component.html',
+  styleUrls: ['./page-preparateur.component.scss']
 })
-export class PageFournisseursComponent implements OnInit {
+export class PageClientComponent implements OnInit {
 
-  public allFournisseurs: UserWithAdresse[]=[]
+  public allPreparateurs: UserWithAdresse[]=[]
   roles = RoleUtilisateurEnum 
   public formModifRole: any
   public id : string =''
@@ -20,30 +20,30 @@ export class PageFournisseursComponent implements OnInit {
   constructor(
     private router : Router,
     private apiUtilisateurService : ApiUtilisateurService,
-    private formBuilber : FormBuilder
-  ) { }
+    private formBuilber : FormBuilder,
+    private activatedRoute: ActivatedRoute
+  ) {  }
 
   ngOnInit(): void {
-    this.getAllFournisseurs()
+    this.getAllPreparateurs()
 
     this.formModifRole = this.formBuilber.group({
       role :[,[Validators.required]]
     })
   }
 
-  nouveauFournisseur():void{
-    this.id = 'fournisseur'
+  nouveauPreparateur():void{
+    this.id = 'preparateur'
     this.router.navigate(['nouveauclient/'+this.id])
-    //this.router.navigate(['nouveaufournisseur'])
   }
 
-  getAllFournisseurs(){
-    this.apiUtilisateurService.getAllFournisseurs().subscribe(
+  getAllPreparateurs(){
+    this.apiUtilisateurService.getAllPreparateurs().subscribe(
       datas  =>{
-        this.allFournisseurs = datas
+        this.allPreparateurs = datas
         //this.allClients.map(c =>  DateUtils.format(new Date(c.dateNaissance)))
        
-        console.log(this.allFournisseurs)
+        console.log(this.allPreparateurs)
       }, error => {
 
         }
@@ -57,10 +57,10 @@ export class PageFournisseursComponent implements OnInit {
       }
       
     );
-    this.getAllFournisseurs();
+    this.getAllPreparateurs();
   }
 
-
+ 
   modifRole(id : number){
     this.formModifRole.valid ? this.apiUtilisateurService.changeRole(id, this.formModifRole.value).subscribe() :'';
   }

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserWithAdresse } from 'src/app/models/userWithAdresse';
 import { Utilisateur } from 'src/app/models/utilisateur';
 import { ApiUtilisateurService } from 'src/app/services/api-utilisateur.service';
+import { RoleUtilisateurEnum } from 'src/app/services/enums/role-utilisateur.enum';
+import { DateUtils } from 'src/app/utils/date.utils';
 
 @Component({
   selector: 'app-page-utilisateurs',
@@ -12,14 +15,22 @@ import { ApiUtilisateurService } from 'src/app/services/api-utilisateur.service'
 export class PageUtilisateursComponent implements OnInit {
 
   public allClients: UserWithAdresse[]=[]
+  roles = RoleUtilisateurEnum 
+  
+  public formModifRole: any
 
   constructor(
     private router : Router,
-    private apiUtilisateurService : ApiUtilisateurService
+    private apiUtilisateurService : ApiUtilisateurService,
+    private formBuilber : FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.getAllClients()
+
+    this.formModifRole = this.formBuilber.group({
+      role :[,[Validators.required]]
+    })
 
   }
 
@@ -31,6 +42,8 @@ export class PageUtilisateursComponent implements OnInit {
     this.apiUtilisateurService.getAllClient().subscribe(
       datas  =>{
         this.allClients =datas
+        //this.allClients.map(c =>  DateUtils.format(new Date(c.dateNaissance)))
+       
         console.log(this.allClients)
       }, error => {
 
@@ -48,8 +61,8 @@ export class PageUtilisateursComponent implements OnInit {
     this.getAllClients();
   }
 
-  detailClient(id : number){
-    this.router.navigate(['detailsclient/'+id])
 
+  modifRole(id : number){
+    this.formModifRole.valid ? this.apiUtilisateurService.changeRole(id, this.formModifRole.value).subscribe() :'';
   }
 }

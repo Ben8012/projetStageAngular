@@ -1,10 +1,10 @@
 <div class="col">
     <div class="row m-3">
         <div class="col-md-8 p-0">
-            <h1>Liste des fournisseurs</h1>
+            <h1>Liste des préparateurs</h1>
         </div>
         <div class="col-md-4" style="text-align: end;" >
-            <button type="button" class="btn btn-primary" (click)="nouveauFournisseur()">
+            <button type="button" class="btn btn-primary" (click)="nouveauPreparateur()">
                 <i class="fas fa-plus"></i>&nbsp;
                 Nouveau
             </button>
@@ -12,14 +12,14 @@
     </div>
     <div class="card mb-2">
         <div class="col m-3">
-            <div *ngFor="let fournisseur of allFournisseurs" >
+            <div *ngFor="let preparateur of allPreparateurs" >
                 <div class="accordion" id="accordion">
-                    <div class="card-header" id="client{{fournisseur.id}}"></div>
+                    <div class="card-header" id="client{{preparateur.id}}"></div>
                     <button class="btn btn-link btn-block col-md-12" 
                             style="text-decoration: none;" 
                             type="button" 
                             data-toggle="collapse" 
-                            [attr.data-target]="'#collapse'+fournisseur.id" 
+                            [attr.data-target]="'#collapse'+preparateur.id" 
                             aria-expanded="true" 
                             aria-controls="collapseOne">
                             
@@ -33,35 +33,35 @@
                                 <div class="col">
                                     <div class="row">
                                         <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
-                                        <div class="col-md-11">{{fournisseur.nom}}</div>
+                                        <div class="col-md-11">{{preparateur.nom}}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
-                                        <div class="col-md-11" >{{fournisseur.prenom}}</div>
+                                        <div class="col-md-11" >{{preparateur.prenom}}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-1"><i class="fas fa-envelope-square"></i></div>
-                                        <div class="col-md-11">{{fournisseur.email}}</div>
+                                        <div class="col-md-11">{{preparateur.email}}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 custom-border-right mb-1 mt-1">
                                 <div class="col">
                                     <div class="row">
-                                        <div class="col-md-12"><i class="fas fa-home custom-icon"></i>&nbsp;{{fournisseur.adresse.rue}} {{fournisseur.adresse.numero}}</div>
+                                        <div class="col-md-12"><i class="fas fa-home custom-icon"></i>&nbsp;{{preparateur.adresse.rue}} {{preparateur.adresse.numero}}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12"><i class="fas fa-map-marker-alt custom-icon"></i>&nbsp;{{fournisseur.adresse.codePostal}} {{fournisseur.adresse.ville}}</div>
+                                        <div class="col-md-12"><i class="fas fa-map-marker-alt custom-icon"></i>&nbsp;{{preparateur.adresse.codePostal}} {{preparateur.adresse.ville}}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12"><i class="fas fa-globe-europe custom-icon"></i>&nbsp;{{fournisseur.adresse.pays}}</div>
+                                        <div class="col-md-12"><i class="fas fa-globe-europe custom-icon"></i>&nbsp;{{preparateur.adresse.pays}}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 ">
                                 <div class="row" >
                                     <div class="col-md-12 text-center">
-                                        <button type="button" class="btn btn-link " (click)="deleteClient(fournisseur.id)" style="text-decoration: none;color: red;">
+                                        <button type="button" class="btn btn-link " (click)="deleteClient(preparateur.id)" style="text-decoration: none;color: red;">
                                             <div><i class="fas fa-trash-alt"></i></div>
                                             <div>Supprimer</div>
                                         </button>    
@@ -74,9 +74,9 @@
                 </div>
          
 
-                <div id="collapse{{fournisseur.id}}" 
+                <div id="collapse{{preparateur.id}}" 
                     class="collapse" 
-                    [attr.aria-labelledby]="'#client'+fournisseur.id" 
+                    [attr.aria-labelledby]="'#client'+preparateur.id" 
                     data-parent="#accordion" 
                     style="max-height: 300px; overflow-y:scroll;">
                     <div class="card-body">
@@ -87,7 +87,7 @@
                                     <h5>Téléphone</h5>
                                 </div>
                                 <div class="col-md-12 text-center">
-                                    <i class="fas fa-phone-alt custom-icon"></i> {{fournisseur.telephone}}
+                                    <i class="fas fa-phone-alt custom-icon"></i> {{preparateur.telephone}}
                                 </div>
                             </div>
                             <div class="col-md-4 custom-border-right mb-1 mt-1">
@@ -95,7 +95,7 @@
                                     <h5>Date de naissance</h5>
                                 </div>
                                 <div class="col-md-12 text-center">
-                                    <i class="far fa-calendar-alt custom-icon"></i>&nbsp;{{fournisseur.dateNaissance}}
+                                    <i class="far fa-calendar-alt custom-icon"></i>&nbsp;{{preparateur.dateNaissance}}
                                 </div>
                             </div>
                             <!-- <div class="col-md-4  mb-1 mt-1">
@@ -112,11 +112,11 @@
                                     
                                         <form [formGroup]="formModifRole" class=" col-md-8">     
                                             <select class="form-control"  formControlName="role" >
-                                                <option selected class="text-center">{{fournisseur.role}}</option>
-                                                <option class="text-center" *ngIf="fournisseur.role != 'client'" >{{roles.client}}</option>
-                                                <option class="text-center" *ngIf="fournisseur.role != 'fournisseur'">{{roles.fournisseur}}</option>
-                                                <option class="text-center" *ngIf="fournisseur.role != 'preparateur'">{{roles.preparateur}}</option>
-                                                <option class="text-center" *ngIf="fournisseur.role != 'admin'">{{roles.admin}}</option>
+                                                <option selected class="text-center">{{preparateur.role}}</option>
+                                                <option class="text-center" *ngIf="preparateur.role != 'client'" >{{roles.client}}</option>
+                                                <option class="text-center" *ngIf="preparateur.role != 'fournisseur'">{{roles.preparateur}}</option>
+                                                <option class="text-center" *ngIf="preparateur.role != 'preparateur'">{{roles.preparateur}}</option>
+                                                <option class="text-center" *ngIf="preparateur.role != 'admin'">{{roles.admin}}</option>
                                             </select>
                                             
                                         </form>
@@ -124,7 +124,7 @@
                                         <div class="col-md-4 text-center">
                                             <input type="button" 
                                                     class="btn btn-primary text-center" 
-                                                    (click)="modifRole(fournisseur.id)" 
+                                                    (click)="modifRole(preparateur.id)" 
                                                     value="Validez"
                                                     [disabled]="formModifRole.invalid">
                                         </div>
