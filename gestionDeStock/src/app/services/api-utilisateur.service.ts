@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import { Utilisateur } from '../models/utilisateur';
+import { Utilisateur } from '../models/utilisateur/utilisateur';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthenticationRequest } from '../models/auth/authentication-request';
 import { AuthenticationResponse } from '../models/auth/authentication-response';
-import { ChangerMotDePasseUtilisateur } from '../models/changer-mot-de-passe-utilisateur-dto';
-import { UserWithAdresse } from '../models/userWithAdresse';
+import { ChangerMotDePasseUtilisateur } from '../models/auth/changer-mot-de-passe-utilisateur-dto';
+import { UserWithAdresse } from '../models/utilisateur/userWithAdresse';
 
 
 const apiLink="http://localhost:3000/utilisateur"

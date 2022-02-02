@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserWithAdresse } from 'src/app/models/userWithAdresse';
+import { UserWithAdresse } from 'src/app/models/utilisateur/userWithAdresse';
 import { ApiUtilisateurService } from 'src/app/services/api-utilisateur.service';
 import { RoleUtilisateurEnum } from 'src/app/services/enums/role-utilisateur.enum';
 

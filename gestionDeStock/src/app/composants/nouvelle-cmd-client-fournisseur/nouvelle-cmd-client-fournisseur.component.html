@@ -1,108 +1,145 @@
 <div class="col ">
     <div class="col-md-12 p-3">
         <div class="col-md-12 mb-3 ">
-            <h2>Nouvelle commande {{origin}}</h2>
+            <h2>Mes commandes</h2>
         </div>
      
            
         <div class="row p-3 custom-border">
-            <div class="col-md-5 custom-border-right">
-                <form>
-                    <div class="form-group m-1">
-                        <input type="text" class="form-control" placeholder="Code commande">
-                    </div>
-                    <div class="form-group  m-1">
-                        <input type="text" class="form-control" placeholder="Date commande">
-                    </div>
-                    <div class="form-group  m-1">
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Sélectionner un client</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>  
-                </form>
-            </div>
-            <div class="col-md-5 custom-border-right">
+            <div class="col-md-8 custom-border-right">
                 <div class="col">
                     <div class="row">
                         <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
-                        <div class="col-md-11">Nom</div>
+                        <div class="col-md-11">{{user.nom}}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
-                        <div class="col-md-11" >Prénom</div>
+                        <div class="col-md-11">{{user.prenom}}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-1"><i class="fas fa-phone-alt custom-icon"></i></div>
-                        <div class="col-md-11">Numero de téléphone</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1"><i class="fas fa-hourglass-half custom-icon"></i></div>
-                        <div class="col-md-11">En préparation</div>
+                        <div class="col-md-11">{{user.email}}</div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-2" style="text-align: center;">
+            <div class="col-md-4" style="text-align: center;">
                 <img src="assets/images/client.jpg" class="rounded-circle" width="100px" height="100px"/>
             </div>
         </div>
     </div>
     <div class="col-md-12 p-3">
-        <div class="row p-3 custom-border">
-            <form >
-                <div class="row">
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Code Article" aria-label="First name">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Quantité" aria-label="Last name">
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" placeholder="Prix unitaire" aria-label="Last name">
-                    </div>
-                    <div class="col-md-1">
-                        <button class="btn btn-success"><i class="fas fa-plus"></i></button>
+        <div class="row p-3 ml-2 mr-2">
+            <div class="row mb-1 mr-0  custom-border">
+    
+                <div class="col-md-2 custom-border-right mb-1 mt-1">
+                    <div class="col-md-12 text-center">
+                        <h5>Nom</h5>
                     </div>
                 </div>
-            </form>
+                <div class="col-md-2 custom-border-right mb-1 mt-1">
+                    <div class="col-md-12 text-center">
+                        <h5>Info</h5>
+                    </div>
+                </div>
+            
+                <div class="col-md-2 custom-border-right mb-1 mt-1">
+                    <div class="col-md-12 text-center">
+                        <h5>Prix</h5>
+                    </div>
+                 </div>
+            
+                <div class="col-md-2 mb-1 mt-1 custom-border-right">
+                    <div class="col-md-12 text-center">
+                        <h5>Quantité</h5> 
+                    </div>
+                </div>
+            
+                <div class="col-md-2 mb-1 mt-1 custom-border-right">
+                    <div class="col-md-12 text-center">
+                        <h5>Status</h5> 
+                    </div>
+                </div>
+                <div class="col-md-2 mb-1 mt-1">
+                    <div class="col-md-12 text-center">
+                        <h5>Actions</h5> 
+                    </div>
+                </div>
         </div>
     </div>
-    <div class="col-md-12 p-3">
-        <div class="row p-3 custom-border" style="max-height:400px; overflow-y: scroll;">
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
-           <app-detail-commande></app-detail-commande>
+    <div class="col-md-12 p-3" >
+        <div class="row p-3" style="max-height:400px; overflow-y: scroll;">
+            <div class="row mb-1 mr-0  custom-border" *ngFor="let commande of commandes">
+    
+                <div class="col-md-2 custom-border-right text-center mb-1 mt-1">
+                    <img [src]="'assets/images/'+commande.article.urlImage" width="50px" height="50"/>
+                </div>
+                <div class="col-md-2 custom-border-right mb-1 mt-1">
+                    <div class="col-md-12 text-center">
+                        <h5>{{commande.article.designation}}</h5>
+                    </div>
+                </div>
+            
+                <div class="col-md-2 custom-border-right mb-1 mt-1">
+                    <div class="col-md-12 text-center">
+                        <h5>{{commande.article.prixTTC}} €</h5>
+                    </div>
+                 </div>
+            
+                <div class="col-md-2 mb-1 mt-1 custom-border-right">
+                    <div class="col-md-12 text-center">
+                        <h5>{{commande.quantite}}</h5> 
+                    </div>
+                </div>
+                <div class="col-md-2 mb-1 mt-1 custom-border-right">
+                    <div class="col-md-12 text-center">
+                        <h5>{{commande.status}}</h5> 
+                    </div>
+                </div>
+            
+                <div class="col-md-2 mb-1 mt-1">
+                    <div class="row">
+                        <div *ngIf="commande.status != status.prepa" class="col-md-5 text-center">
+                            <div class=" text-center">
+                                <button type="button" class="btn btn-link" style="text-decoration: none;" (click)="valider(commande.id)">
+                                    <div> <i class="fas fa-check-circle"></i></div>
+                                    <div>validez</div>
+                                </button>
+                            </div> 
+                        </div>
+                        <div *ngIf="commande.status != status.prepa" class="col-md-5 text-center">
+                            <div class=" text-center">
+                                <button type="button" class="btn btn-link" style="text-decoration: none; color: red;" (click)="annuler(commande.id)" >
+                                    <div> <i class="fas fa-trash-alt"></i></div>
+                                    <div>annuler</div>
+                                </button>
+                            </div> 
+                        </div>
+
+                    </div>
+                   
+                </div>
+              
+            </div>
+            <div class="col-md-12 p-3">
+                <div class="row p-3 custom-border" style="text-align: end;">
+                    <h3>Total de la commande : {{total}}€ </h3>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="col-md-12 p-3">
-        <div class="row p-3 custom-border" style="text-align: end;">
-            <h3>Total de la commande : 100 </h3>
-        </div>
-    </div>
+    
 
     <div class="col-md-12" style="text-align: end;">
-        <button class="btn btn-danger m-4">
+        <button class="btn btn-danger m-4"
+                (click)="cancel()">
             <i class="fas fa-ban"></i>&nbsp;
-            Annuler
+            Retour
         </button>
-        <button class="btn btn-primary m-4">
+        <button class="btn btn-primary m-4"
+                (click)="validerTout()">
             <i class="fas fa-save"></i>&nbsp;
-            Enregistrer
+            Validez tout
         </button>
     </div>
 </div>

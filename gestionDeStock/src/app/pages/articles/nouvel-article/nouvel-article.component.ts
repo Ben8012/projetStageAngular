@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Article } from 'src/app/models/article';
-import { Categorie } from 'src/app/models/categories';
+import { Article } from 'src/app/models/article/article';
+import { Categorie } from 'src/app/models/categorie/categories';
 import { ApiArticleService } from 'src/app/services/api-article.service';
 import { ApiCategorieService } from 'src/app/services/api-categorie.service';
 

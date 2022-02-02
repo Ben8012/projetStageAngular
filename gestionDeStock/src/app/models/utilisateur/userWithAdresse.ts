@@ -1,4 +1,4 @@
-import { Adresse } from "./adresse";
+import { Adresse } from "../adresse/adresse";
 
 export class UserWithAdresse{
     id: number;
@@ -10,7 +10,10 @@ export class UserWithAdresse{
     role: string;
     createdAt:Date;
     updatedAt : Date;
+    deletedAt : Date;
     adresse : Adresse
+    societe :string
+
 
     constructor(data : any ){
         this.id = data.id;
@@ -22,7 +25,9 @@ export class UserWithAdresse{
         this.role = data.role;
         this.createdAt = data.createdAt;
         this.updatedAt = data.updatedAt;
+        this.deletedAt = data.deletedAt;
         this.adresse = data.adresse;
+        this.societe = data.societe;
       
     }
 }

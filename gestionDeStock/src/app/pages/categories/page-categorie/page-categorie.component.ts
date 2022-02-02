@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Categorie } from 'src/app/models/categories';
+import { Categorie } from 'src/app/models/categorie/categories';
 import { ApiCategorieService } from 'src/app/services/api-categorie.service';
 
 @Component({

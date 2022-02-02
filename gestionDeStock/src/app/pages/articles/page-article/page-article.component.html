@@ -15,6 +15,7 @@
            
                 <h3 class="text-center">Sélectionner une catégorie</h3>
                 <select  class="form-control " [(ngModel)]="categorieValue" (ngModelChange)="getCat(categorieValue)" >
+                    <option [ngValue]="">Toutes les categories</option>
                     <option *ngFor="let categorie of categories" [ngValue]="categorie">
                         {{categorie.nom}}
                     </option>
@@ -23,73 +24,103 @@
         </div>
         <div class="row mb-1 mr-0  custom-border">
             <div class="col-md-2 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Image</div>
-            <div class="col-md-4 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Info</div>
-            <div class="col-md-3 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Categorie</div>
-            <div class="col-md-3 text-bolt text-underline text-center">Actions</div>
+            <div class="col-md-3 text-bolt text-underline text-center  mb-1 mt-1">Prix</div>
+            <div class="col-md-3 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Infos</div>
+            <div class="col-md-4 text-bolt text-underline text-center">Commander</div>
         </div>
-        <div class="row mb-1 mr-0  custom-border" *ngFor="let article of newArticles">
-            <div class="col-md-2 mb-1 mt-1 custom-border-right text-center">
-                <img [src]="'assets/images/'+article.urlImage" width="100px" height="100px"/>
-            </div>
-            <div class="col-md-4 custom-border-right mb-1 mt-1">
-                <div class="col">
-                    <div class="row">
-                        <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
-                        <div class="col-md-11">Code article : {{article.codeArticle}}</div> 
+
+        <div *ngFor="let article of newArticles">
+            <div class="accordion row" id="accordion">
+                <div class="card-header" id="client{{article.id}}"></div>
+                <button class="btn btn-link btn-block col-md-8" 
+                        style="text-decoration: none;" 
+                        type="button" 
+                        data-toggle="collapse" 
+                        [attr.data-target]="'#collapse'+article.id" 
+                        aria-expanded="true" 
+                        aria-controls="collapseOne">
+
+
+                    <div class="row mb-1 mr-0 p-1  " >
+                        <div class="col-md-3 mb-1 mt-1 custom-border-right text-center">
+                            <img [src]="'assets/images/'+article.urlImage" width="100px" height="100px"/>
+                        </div>
+                        <div class="col-md-4 mb-1 mt-1">
+                            <div class="col">
+                                <div class="col-md-12 m-4"><h4>{{article.prixTTC}} €</h4></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 custom-border-right mb-1 mt-1">
+                            <div class="row">
+                                <div class="col-md-12 m-2">{{article.categorie.nom}} </div>           
+                                <div class="col-md-12 m-2">{{article.categorie.description}}</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
-                        <div class="col-md-11" >Désignation : {{article.designation}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1"><i class="fas fa-dollar-sign custom-icon"></i></div>
-                        <div class="col-md-11">Prix HTVA : {{article.prixHTVA}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1"><i class="fas fa-dollar-sign custom-icon"></i></div>
-                        <div class="col-md-11">Prix TTC : {{article.prixTTC}}</div>
+                </button> 
+                <div class="col-md-4  ">
+                    <div class="text-center ">
+                        <label for="floatingInput">Quantité</label>
+                        <input type="text" class="form-control" id="floatingInput" [(ngModel)]="quantite">
+                    </div> 
+                    <div class=" text-center">
+                        <button type="button" class="btn btn-link" style="text-decoration: none;" data-toggle="collapse" (click)="ajouterPanier(article.id)" >
+                            <div> <i class="fas fa-shopping-basket"></i></div>
+                            <div>Ajouter au panier</div>
+                        </button>
+                    </div> 
+                </div>
+                    
+
+                <div id="collapse{{article.id}}" 
+                    class="collapse" 
+                    [attr.aria-labelledby]="'#client'+article.id" 
+                    data-parent="#accordion" 
+                    style="max-height: 300px; overflow-y:scroll;">
+                    <div class="card-body">
+
+                        <div class="row mb-1 mr-0  custom-border">
+                            <div class="col-md-4 p-4 custom-border-right mb-1 mt-1 text-center">
+                                <button type="button" class="btn btn-link " style="text-decoration: none;">
+                                    <div> <i class="fas fa-pencil-alt"></i></div>
+                                    <div>Modifier</div>
+                                </button>
+                            </div>
+                            <div class="col-md-4 p-2 custom-border-right text-center">
+                                <div class="row">
+                                    <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
+                                    <div class="col-md-11">Code : {{article.categorie.codeCategorie}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
+                                    <div class="col-md-11">Code article : {{article.codeArticle}}</div> 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
+                                    <div class="col-md-11" >Désignation : {{article.designation}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"><i class="fas fa-dollar-sign custom-icon"></i></div>
+                                    <div class="col-md-11">Prix HTVA : {{article.prixHTVA}}€</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-4 mb-1 mt-1 text-center">
+                                <button type="button" class="btn btn-link" style="text-decoration: none;color: red;">
+                                    <div><i class="fas fa-trash-alt"></i></div>
+                                    <div>Supprimer</div>
+                                </button>  
+                            </div>
+
+                            
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 custom-border-right mb-1 mt-1">
-               <div class="row">
-                   <div class="col-md-2">
-                       <i class="fas fa-flag-checkered custom-icon"></i>
-                   </div>
-                   <div class="col-md-10">
-                       <div class="row">
-                            <div class="col-md-12">Nom : {{article.categorie.nom}} </div>
-                            <div class="col-md-12">Code : {{article.categorie.codeCategorie}}</div>
-                            <div class="col-md-12">Desciption : {{article.categorie.description}}</div>
-                       </div>
-                   </div>
-               </div>
-            </div>
-            <div class="col-md-3">
-                <div class="row p-0">
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-link " style="text-decoration: none;">
-                            <div> <i class="fas fa-pencil-alt"></i></div>
-                            <div>Modifier</div>
-                        </button>
-                    </div> 
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-link " style="text-decoration: none;">
-                            <div><i class="fas fa-trash-alt"></i></div>
-                            <div>Supprimer</div>
-                        </button>    
-                    </div> 
-                    <div class="col-md-4"> 
-                        <button type="button" class="btn btn-link" style="text-decoration: none;">
-                            <div> <i class="fas fa-list-alt"></i></div>
-                            <div>Détails</div> 
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-    <div class="row mb-3" style="text-align: center;">
-        <app-pagination></app-pagination>
+
+        <div class="row mb-3" style="text-align: center;">
+            <app-pagination></app-pagination>
+        </div>
     </div>
 </div>

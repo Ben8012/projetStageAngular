@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserWithAdresse } from 'src/app/models/userWithAdresse';
-import { Utilisateur } from 'src/app/models/utilisateur';
+import { UserWithAdresse } from 'src/app/models/utilisateur/userWithAdresse';
+import { Utilisateur } from 'src/app/models/utilisateur/utilisateur';
 import { ApiUtilisateurService } from 'src/app/services/api-utilisateur.service';
 import { RoleUtilisateurEnum } from 'src/app/services/enums/role-utilisateur.enum';
 import { DateUtils } from 'src/app/utils/date.utils';
@@ -16,6 +16,7 @@ export class PageUtilisateursComponent implements OnInit {
 
   public allClients: UserWithAdresse[]=[]
   roles = RoleUtilisateurEnum 
+  getrole : any
   
   public formModifRole: any
 
@@ -64,5 +65,10 @@ export class PageUtilisateursComponent implements OnInit {
 
   modifRole(id : number){
     this.formModifRole.valid ? this.apiUtilisateurService.changeRole(id, this.formModifRole.value).subscribe() :'';
+  }
+
+  getRole(getrole : RoleUtilisateurEnum, id : number){
+    console.log(getrole)
+    this.formModifRole.valid ? this.apiUtilisateurService.changeRole(id, getrole).subscribe() :'';
   }
 }

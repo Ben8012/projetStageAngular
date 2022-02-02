@@ -110,31 +110,26 @@
                                 </div>
                                 <div class="row mb-2">
                                     
-                                        <form [formGroup]="formModifRole" class=" col-md-8">     
-                                            <select class="form-control"  formControlName="role" >
-                                                <option selected class="text-center">{{fournisseur.role}}</option>
-                                                <option class="text-center" *ngIf="fournisseur.role != 'client'" >{{roles.client}}</option>
-                                                <option class="text-center" *ngIf="fournisseur.role != 'fournisseur'">{{roles.fournisseur}}</option>
-                                                <option class="text-center" *ngIf="fournisseur.role != 'preparateur'">{{roles.preparateur}}</option>
-                                                <option class="text-center" *ngIf="fournisseur.role != 'admin'">{{roles.admin}}</option>
-                                            </select>
-                                            
-                                        </form>
+                                    <form [formGroup]="formModifRole" class=" col-md-8">     
+                                        <select class="form-control"  formControlName="role" >
+                                            <option selected class="text-center">{{fournisseur.role}}</option>
+                                            <option class="text-center" *ngIf="fournisseur.role != 'client'" >{{roles.client}}</option>
+                                            <option class="text-center" *ngIf="fournisseur.role != 'fournisseur'">{{roles.fournisseur}}</option>
+                                            <option class="text-center" *ngIf="fournisseur.role != 'preparateur'">{{roles.preparateur}}</option>
+                                            <option class="text-center" *ngIf="fournisseur.role != 'admin'">{{roles.admin}}</option>
+                                        </select>
+                                        
+                                    </form>
 
-                                        <div class="col-md-4 text-center">
-                                            <input type="button" 
-                                                    class="btn btn-primary text-center" 
-                                                    (click)="modifRole(fournisseur.id)" 
-                                                    value="Validez"
-                                                    [disabled]="formModifRole.invalid">
-                                        </div>
-                                   
-                                    
+                                    <div class="col-md-4 text-center">
+                                        <input type="button" 
+                                                class="btn btn-primary text-center" 
+                                                (click)="modifRole(fournisseur.id)" 
+                                                value="Validez"
+                                                [disabled]="formModifRole.invalid">
+                                    </div>                     
                                 </div>
-                                    
-                                
                             </div>
-                           
                         </div>
                     </div>
                 </div>

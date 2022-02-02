@@ -115,8 +115,17 @@
                                                 <option class="text-center" *ngIf="client.role != 'preparateur'">{{roles.preparateur}}</option>
                                                 <option class="text-center" *ngIf="client.role != 'admin'">{{roles.admin}}</option>
                                             </select>
+
                                             
                                         </form>
+
+                                        <!-- <select  class="form-control " [(ngModel)]="getrole" (ngModelChange)="getRole(getrole,client.id)" >
+                                            <option class="text-center" selected>Toutes les categories</option> 
+                                            <option class="text-center" *ngIf="client.role != 'client'" >{{roles.client}}</option>
+                                            <option class="text-center" *ngIf="client.role != 'fournisseur'">{{roles.fournisseur}}</option>
+                                            <option class="text-center" *ngIf="client.role != 'preparateur'">{{roles.preparateur}}</option>
+                                            <option class="text-center" *ngIf="client.role != 'admin'">{{roles.admin}}</option>
+                                        </select> -->
 
                                         <div class="col-md-4 text-center">
                                             <input type="button" 

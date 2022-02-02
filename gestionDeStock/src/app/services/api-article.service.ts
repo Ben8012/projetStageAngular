@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Article} from '../models/article';
+import {Article} from '../models/article/article';
 import { Observable } from 'rxjs';
-import { Categorie } from '../models/categories';
+import { Categorie } from '../models/categorie/categories';
+import { AjoutPanier } from '../models/article/ajoutPanier';
 
 const apiLink="http://localhost:3000/article"
 
@@ -41,6 +42,11 @@ export class ApiArticleService {
 
   restoreArticle(id : number){
     return this.http.get(apiLink+id);
+  }
+
+  ajouterPanier(ajouterPanier : AjoutPanier){
+    console.log('test')
+    return this.http.post(apiLink+'/ajouterpanier',ajouterPanier);
   }
 
 }

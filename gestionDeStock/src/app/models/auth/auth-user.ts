@@ -1,5 +1,5 @@
 import { DateUtils } from "src/app/utils/date.utils";
-import { Adresse } from "../adresse";
+import { Adresse } from "../adresse/adresse";
 
 export class AuthUser{
     id: number;

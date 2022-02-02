@@ -1,4 +1,4 @@
-import { Categorie } from "./categories";
+import { Categorie } from "../categorie/categories";
 
 export class Article{
 

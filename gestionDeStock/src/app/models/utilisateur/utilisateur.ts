@@ -1,4 +1,4 @@
-import { Adresse } from "./adresse";
+import { Adresse } from "../adresse/adresse";
 
 export class Utilisateur{
     id: number;
