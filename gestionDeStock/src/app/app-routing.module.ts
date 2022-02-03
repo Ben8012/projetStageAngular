@@ -21,6 +21,7 @@ import { PageProfilComponent } from './pages/profil/page-profil/page-profil.comp
 import { NouvelUtilisateurComponent } from './pages/utilisateurs/nouvel-utilisateur/nouvel-utilisateur.component';
 import { PageUtilisateursComponent } from './pages/utilisateurs/page-utilisateurs/page-utilisateurs.component';
 import { ApplicationGuardService } from './services/guard/application-guard.service';
+import { CommandePreparateurComponent } from './pages/preparateur/commande-preparateur/commande-preparateur.component';
 
 const routes: Routes = [
 
@@ -146,6 +147,11 @@ const routes: Routes = [
       {
         path:'detailsclient/:id', 
         component : DetailsClientsFournisseursComponent,
+        canActivate : [ApplicationGuardService]
+      },
+      {
+        path:'commandespreparateur', 
+        component : CommandePreparateurComponent,
         canActivate : [ApplicationGuardService]
       },
     ]

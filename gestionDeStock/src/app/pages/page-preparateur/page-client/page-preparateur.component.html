@@ -114,8 +114,8 @@
                                             <select class="form-control"  formControlName="role" >
                                                 <option selected class="text-center">{{preparateur.role}}</option>
                                                 <option class="text-center" *ngIf="preparateur.role != 'client'" >{{roles.client}}</option>
-                                                <option class="text-center" *ngIf="preparateur.role != 'fournisseur'">{{roles.preparateur}}</option>
-                                                <option class="text-center" *ngIf="preparateur.role != 'preparateur'">{{roles.preparateur}}</option>
+                                                <option class="text-center" *ngIf="preparateur.role != 'préparateur'">{{roles.preparateur}}</option>
+                                                <option class="text-center" *ngIf="preparateur.role != 'fournisseur'">{{roles.fournisseur}}</option>
                                                 <option class="text-center" *ngIf="preparateur.role != 'admin'">{{roles.admin}}</option>
                                             </select>
                                             

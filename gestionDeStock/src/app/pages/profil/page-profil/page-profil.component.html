@@ -5,9 +5,17 @@
                 <img src="assets/images/client.jpg" class="rounded-circle" width="200px" height="200px"/>
             </div>
             <div class="mb-3">
-                <h2>Nom prénom</h2>
-                <small class="form-text text-muted">Adresse, ville, 1495 </small>
-            </div>
+                <h2>{{user.nom}} {{user.prenom}}</h2>
+                <div>
+                  <small class="form-text text-muted"> {{user.adresse.rue}}, {{user.adresse.numero}} </small>
+                </div>
+               <div>
+                <small > {{user.adresse.codePostal}} {{user.adresse.ville}} </small>
+               </div>
+              <div>
+                <small class="form-text text-muted">{{user.adresse.pays}}</small>
+              </div>
+              </div>
             <div class="col mb-3">
                 <button type="button" class="btn btn-primary m-1" [routerLink]="['/modifierprofil']"><i class="fas fa-pencil-alt"></i>&nbsp;Modifier le profil</button>
                 <button type="button" class="btn btn-warning m-1" [routerLink]="['/changermotdepasse']"><i class="fas fa-lock"></i>&nbsp;change le mot de passe</button>
@@ -32,7 +40,7 @@
               </tr>
               <tr>
                 <th scope="row">Adresse</th>
-                <td>{{user.adresse.numero}} {{user.adresse.rue}}, {{user.adresse.codePostal}} {{user.adresse.ville}}</td>
+                <td> {{user.adresse.rue}},{{user.adresse.numero}} | {{user.adresse.codePostal}} {{user.adresse.ville}}</td>
               </tr>
               <tr>
                 <th scope="row">Date de naissance</th>

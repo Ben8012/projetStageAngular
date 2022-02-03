@@ -36,6 +36,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpInterceptorService } from './services/interceptor/http-interceptor.service';
 import { UserSessionService } from './services/user_session/user-session.service';
+import { CommandePreparateurComponent } from './pages/preparateur/commande-preparateur/commande-preparateur.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { UserSessionService } from './services/user_session/user-session.service
     NouvelUtilisateurComponent,
     PageProfilComponent,
     ChangerMotDePasseComponent,
+    CommandePreparateurComponent,
  
    
     

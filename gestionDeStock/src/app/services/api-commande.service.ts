@@ -18,7 +18,6 @@ export class ApiCommandeService {
 
   
   ajouterPanier(ajouterPanier : AjoutPanier){
-      console.log(ajouterPanier)
     return this.http.post(apiLink+'/ajouterpanier',ajouterPanier);
   }
 
@@ -32,6 +31,23 @@ export class ApiCommandeService {
 
   annulerUneCommande(id : number, userId : number):Observable<any[]>{
     return this.http.get<any[]>(apiLink+'/annulercommande/'+id+'/'+userId)
+  }
+
+  validerToutCommande( allCommandeId : number[],userId : number):Observable<any[]>{
+    console.log('test')
+    return this.http.post<any[]>(apiLink+'/validertoutcommande/'+userId,allCommandeId)
+  }
+ 
+  getCommandeToDo(userId : number):Observable<any[]>{
+     return this.http.get<any[]>(apiLink+'/getcommandetodo/'+userId)
+   }
+
+   commandePrete(id : number, userId : number):Observable<any[]>{
+    return this.http.get<any[]>(apiLink+'/commandeprete/'+id+'/'+userId)
+  }
+
+  commandeRecue(id : number, userId : number):Observable<any[]>{
+    return this.http.get<any[]>(apiLink+'/commanderecue/'+id+'/'+userId)
   }
 
 }

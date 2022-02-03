@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthUser } from 'src/app/models/auth/auth-user';
 import { Commande } from 'src/app/models/commande/commande';
 import { ApiCommandeService } from 'src/app/services/api-commande.service';
+import { RoleUtilisateurEnum } from 'src/app/services/enums/role-utilisateur.enum';
 import { StatusCommandeEnum } from 'src/app/services/enums/status-commande.enum';
 import { UserSessionService } from 'src/app/services/user_session/user-session.service';
 
@@ -18,6 +19,7 @@ export class NouvelleCmdClientFournisseurComponent implements OnInit {
   public commandes : Commande[]=[]; 
   public total : number = 0
   status = StatusCommandeEnum
+  public isNoValid : boolean = true
 
   constructor(
     private activatedRoute : ActivatedRoute,
@@ -33,7 +35,6 @@ export class NouvelleCmdClientFournisseurComponent implements OnInit {
 
     this.userSessionService.user$.subscribe((user : any) => {
       this.user  = user;
-      //console.log(this.user)
     })
 
     this.getCommandeByUser()
@@ -43,25 +44,52 @@ export class NouvelleCmdClientFournisseurComponent implements OnInit {
     this.apiCommandeService.getCommandeByUser(this.user.id).subscribe(
       datas => {
         this.commandes = datas;
-        //console.log(this.commandes);
+        console.log(this.commandes);
         this.calculTotal();
       }, error => {
-
-      }
+        }
     );
    
   }
 
   calculTotal(){
-    
+    if(this.commandes.map(c=> c.status == StatusCommandeEnum.attente)){
+      this.total = 0
       this.commandes.map(
-        c => this.total += (c.article.prixTTC * c.quantite)
+        c => c.status == StatusCommandeEnum.attente ? this.total += (c.article.prixTTC * c.quantite) : ''
       )
-   
+    }
+     
   }
 
   validerTout(){
+    if(this.toutArticleValider()){
+      alert('Les articles ont deja été validé')
+    }else {
+      this.apiCommandeService.validerToutCommande( this.commandes.map(c => c.id),this.user.id) .subscribe(
+        datas => {
+          this.commandes = datas;
+          //console.log(this.commandes);
+          this.calculTotal();
+        }, error => {
+  
+        }
+      ); 
+    }
+     
+  }
+  
 
+  toutArticleValider():boolean{
+    let isnotvalid = true
+    let attente = this.commandes.map(c => c.status == StatusCommandeEnum.attente)
+    console.log(attente)
+    for (let i = 0; i < attente.length; i++) {
+        isnotvalid ? attente[i] == true ? isnotvalid = false :'' :'';
+    }
+    console.log(isnotvalid)
+    this.isNoValid =isnotvalid
+    return isnotvalid
   }
 
   cancel(){
@@ -72,8 +100,8 @@ export class NouvelleCmdClientFournisseurComponent implements OnInit {
     this.apiCommandeService.validerUneCommande(id ,this.user.id).subscribe(
       datas => {
         this.commandes = datas;
-        console.log(this.commandes);
-        
+        //console.log(this.commandes);
+        this.calculTotal();
       }, error => {
 
       }
@@ -84,12 +112,24 @@ export class NouvelleCmdClientFournisseurComponent implements OnInit {
     this.apiCommandeService.annulerUneCommande(id ,this.user.id).subscribe(
       datas => {
         this.commandes = datas;
-        console.log(this.commandes);
+        //console.log(this.commandes);
         this.calculTotal();
       }, error => {
 
       }
     );
     
+  }
+
+  recu(id:number){
+    this.apiCommandeService.commandeRecue(id ,this.user.id).subscribe(
+      datas => {
+        this.commandes = datas;
+        //console.log(this.commandes);
+        this.calculTotal();
+      }, error => {
+
+      }
+    );
   }
 }

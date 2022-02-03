@@ -65,7 +65,7 @@ export class MenuComponent implements OnInit {
         {
           id :'C32',
           icon:'fas fa-shopping-basket',
-          titre:'Commandes préparateurs',
+          titre:'Commandes a prépararer',
           url:'commandespreparateur',
         },
       ]

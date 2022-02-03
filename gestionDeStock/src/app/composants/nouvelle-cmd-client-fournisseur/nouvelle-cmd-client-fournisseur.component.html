@@ -98,7 +98,7 @@
             
                 <div class="col-md-2 mb-1 mt-1">
                     <div class="row">
-                        <div *ngIf="commande.status != status.prepa" class="col-md-5 text-center">
+                        <div *ngIf="commande.status == status.attente" class="col-md-5 text-center">
                             <div class=" text-center">
                                 <button type="button" class="btn btn-link" style="text-decoration: none;" (click)="valider(commande.id)">
                                     <div> <i class="fas fa-check-circle"></i></div>
@@ -106,12 +106,25 @@
                                 </button>
                             </div> 
                         </div>
-                        <div *ngIf="commande.status != status.prepa" class="col-md-5 text-center">
+                        <div *ngIf="commande.status == status.attente" class="col-md-5 text-center">
                             <div class=" text-center">
                                 <button type="button" class="btn btn-link" style="text-decoration: none; color: red;" (click)="annuler(commande.id)" >
                                     <div> <i class="fas fa-trash-alt"></i></div>
                                     <div>annuler</div>
                                 </button>
+                            </div> 
+                        </div>
+                        <div *ngIf="commande.status == status.livraison" class="col-md-12 text-center">
+                            <div class=" text-center">
+                                <button type="button" class="btn btn-link" style="text-decoration: none; color: green;" (click)="recu(commande.id)">
+                                    <div> <i class="fas fa-check-circle"></i></div>
+                                    <div>Reçu</div>
+                                </button>
+                            </div> 
+                        </div>
+                        <div *ngIf="commande.status == status.recu" class="col-md-12 text-center">
+                            <div class=" text-center">
+                                Merci et a bientot
                             </div> 
                         </div>
 
@@ -122,7 +135,7 @@
             </div>
             <div class="col-md-12 p-3">
                 <div class="row p-3 custom-border" style="text-align: end;">
-                    <h3>Total de la commande : {{total}}€ </h3>
+                    <h3>Solde a payer : {{total}}€ </h3>
                 </div>
             </div>
         </div>
@@ -136,7 +149,7 @@
             <i class="fas fa-ban"></i>&nbsp;
             Retour
         </button>
-        <button class="btn btn-primary m-4"
+        <button *ngIf="isNoValid" class="btn btn-primary m-4"
                 (click)="validerTout()">
             <i class="fas fa-save"></i>&nbsp;
             Validez tout
