@@ -1,4 +1,14 @@
-.menu{
-    color : white;
-    background-color: rgb(183, 205, 233);
+
+
+.linkGen{
+    a:hover{
+        border:1px solid grey;
+    }
+
+    .subLink{
+        padding-left:20px;
+        a:hover{
+            border:1px solid grey;
+        }
+}
 }

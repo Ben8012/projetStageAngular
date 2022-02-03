@@ -37,6 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpInterceptorService } from './services/interceptor/http-interceptor.service';
 import { UserSessionService } from './services/user_session/user-session.service';
 import { CommandePreparateurComponent } from './pages/preparateur/commande-preparateur/commande-preparateur.component';
+import { FooterComponent } from './composants/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { CommandePreparateurComponent } from './pages/preparateur/commande-prepa
     PageProfilComponent,
     ChangerMotDePasseComponent,
     CommandePreparateurComponent,
+    FooterComponent,
  
    
     
