@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthUser } from 'src/app/models/auth/auth-user';
 import { Commande } from 'src/app/models/commande/commande';
-import { ApiCommandeService } from 'src/app/services/api-commande.service';
+import { ApiCommandeService } from 'src/app/services/api/api-commande.service';
 import { StatusCommandeEnum } from 'src/app/services/enums/status-commande.enum';
 import { UserSessionService } from 'src/app/services/user_session/user-session.service';
 

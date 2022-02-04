@@ -2,20 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserWithAdresse } from 'src/app/models/utilisateur/userWithAdresse';
+import { Utilisateur } from 'src/app/models/utilisateur/utilisateur';
 import { ApiUtilisateurService } from 'src/app/services/api/api-utilisateur.service';
 import { RoleUtilisateurEnum } from 'src/app/services/enums/role-utilisateur.enum';
+import { DateUtils } from 'src/app/utils/date.utils';
 
 @Component({
-  selector: 'app-page-fournisseurs',
-  templateUrl: './page-fournisseurs.component.html',
-  styleUrls: ['./page-fournisseurs.component.scss']
+  selector: 'app-page-utilisateurs',
+  templateUrl: './page-utilisateurs.component.html',
+  styleUrls: ['./page-utilisateurs.component.scss']
 })
-export class PageFournisseursComponent implements OnInit {
+export class PageUtilisateursComponent implements OnInit {
 
-  public allFournisseurs: UserWithAdresse[]=[]
+  public allClients: UserWithAdresse[]=[]
   roles = RoleUtilisateurEnum 
+  getrole : any
+  
   public formModifRole: any
-  public id : string =''
 
   constructor(
     private router : Router,
@@ -24,26 +27,25 @@ export class PageFournisseursComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAllFournisseurs()
+    this.getAllClients()
 
     this.formModifRole = this.formBuilber.group({
       role :[,[Validators.required]]
     })
+
   }
 
-  nouveauFournisseur():void{
-    this.id = 'fournisseur'
-    this.router.navigate(['nouveauclient/'+this.id])
-    //this.router.navigate(['nouveaufournisseur'])
+  nouveauUtilisateur():void{
+    this.router.navigate(['nouvelutilisateur'])
   }
 
-  getAllFournisseurs(){
-    this.apiUtilisateurService.getAllFournisseurs().subscribe(
+  getAllClients(){
+    this.apiUtilisateurService.getAllClient().subscribe(
       datas  =>{
-        this.allFournisseurs = datas
+        this.allClients =datas
         //this.allClients.map(c =>  DateUtils.format(new Date(c.dateNaissance)))
        
-        console.log(this.allFournisseurs)
+        console.log(this.allClients)
       }, error => {
 
         }
@@ -57,11 +59,17 @@ export class PageFournisseursComponent implements OnInit {
       }
       
     );
-    this.getAllFournisseurs();
+    this.getAllClients();
   }
 
 
   modifRole(id : number){
     this.formModifRole.valid ? this.apiUtilisateurService.changeRole(id, this.formModifRole.value).subscribe() :'';
+    this.router.navigate(['utilisateurs'])
+  }
+
+  getRole(getrole : RoleUtilisateurEnum, id : number){
+    console.log(getrole)
+    this.formModifRole.valid ? this.apiUtilisateurService.changeRole(id, getrole).subscribe() :'';
   }
 }

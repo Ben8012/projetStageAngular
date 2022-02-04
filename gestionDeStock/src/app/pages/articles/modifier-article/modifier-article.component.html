@@ -1,0 +1,77 @@
+<main class="col-md-12 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2"><i class="fas fa-info-circle custom-icon"></i>&nbsp;Information de l'article {{article.designation}}</h1>
+    </div>
+  </main>
+  
+  <div class="col ">
+      <div class="col-md-12 p-3">
+          <div class="col md-12">
+              <form [formGroup]="formModifierArticle">
+                  <div class="row mb-3">
+                    <div class="col">
+                        <label>Nom</label>
+                        <input type="text" class="form-control" placeholder="Désignation" formControlName="designation">
+                    </div>
+                    <div class="col">
+                      <label>Code de l'article</label>
+                      <input type="text" class="form-control" formControlName="codeArticle">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                      <div class="col">
+                        <label>Prix HTVA</label>
+                        <input type="text" class="form-control" placeholder="Prix unitaire HTVA" formControlName="prixHTVA">
+                      </div>
+                      <div class="col">
+                        <label>Taux TVA</label>
+                        <input type="text" class="form-control" placeholder="Taux TVA" formControlName="tauxTVA">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <div class="col">
+                        <label>Code stockage</label>
+                        <select class="form-control"  formControlName="codeStock" >
+                              <!-- <option selected>Sélectionner une catégorie</option> -->
+                              <option *ngFor="let stock of stocks" value={{stock.id}}>{{stock.codeStock}}</option>
+                              
+                            </select>
+                        <!-- <input type="text" class="form-control" placeholder="code de stockage" formControlName="codeStock"> -->
+                      </div>
+                      
+                      <div class="col">
+                        <label>Categories</label>
+                          <select class="form-control" formControlName="categorieId" >
+                              <!-- <option selected>Sélectionner une catégorie</option> -->
+                              <option *ngFor="let categorie of categories" value={{categorie.id}}>{{categorie.nom}}</option>
+                              
+                            </select>
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col">
+                        <label>Image</label>
+                        <input type="text" (change)="onFileSelected($event)" class="form-control" placeholder="Copiez l'url de l'image" formControlName="urlImage">
+                    </div>
+                    <div class="col">
+                      <label>Quantitée stockée</label>
+                      <input type="number" class="form-control" placeholder="Taux TVA" formControlName="quantite">
+                    </div>
+                  </div>
+                  
+                </form>
+          </div>
+      </div>
+      <div class="col-md-12" style="text-align: end;">
+          <button class="btn btn-danger m-4" (click)="cancelClick()">
+              <i class="fas fa-ban"></i>&nbsp;
+              Annuler
+          </button>
+          <button class="btn btn-primary m-4" 
+                  (click)="saveClick()"
+                  [disabled]="formModifierArticle.invalid">
+              <i class="fas fa-save"></i>&nbsp;
+              Validez
+          </button>
+      </div>
+  </div>

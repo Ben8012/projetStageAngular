@@ -5,52 +5,60 @@
 </main>
 
 <div class="col ">
-    <!-- <div class="col-md-12 m-3">
-        <img src="assets/images/pomme.jpg" class="rounded-circle" width="200px" height="200px"/>
-    </div> -->
-    <hr>
     <div class="col-md-12 p-3">
-        <div class="col-md-12 mb-3 ">
-            <h2> <i class="fas fa-info-circle custom-icon"></i>&nbsp;Information de l'article </h2>
-        </div>
         <div class="col md-12">
             <form [formGroup]="formNouvelArticle">
-                <div class="row mb-3">
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="Code Article" formControlName="codeArticle">
-                  </div>
-                  <div class="col">
+              <div class="row mb-3">
+                <div class="col">
+                    <label>Nom</label>
                     <input type="text" class="form-control" placeholder="Désignation" formControlName="designation">
-                  </div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Prix unitaire HTVA" formControlName="prixHTVA">
-                    </div>
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Taux TVA" formControlName="tauxTVA">
-                    </div>
+                <div class="col">
+                  <label>Code de l'article</label>
+                  <input type="text" class="form-control" placeholder="Code de l'article" formControlName="codeArticle">
                 </div>
-                <div class="row mb-3">
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Prix unitaire TTC" formControlName="prixTTC">
-                    </div>
-                    
-                    <div class="col">
-                        <select class="form-control" id="exampleFormControlSelect1" formControlName="categorieId" >
-                            <option selected>Sélectionner une catégorie</option>
-                            <option *ngFor="let categorie of categories" value={{categorie.id}}>{{categorie.nom}}</option>
-                            
-                          </select>
-                    </div>
-                </div>
-                <div class="row mb-3">
+              </div>
+              <div class="row mb-3">
                   <div class="col">
-                    <input type="text" (change)="onFileSelected($event)" class="form-control" placeholder="Copiez l'url de l'image" formControlName="urlImage">
-                    
+                    <label>Prix HTVA</label>
+                    <input type="text" class="form-control" placeholder="Prix unitaire HTVA" formControlName="prixHTVA">
                   </div>
+                  <div class="col">
+                    <label>Taux TVA</label>
+                    <input type="text" class="form-control" placeholder="Taux TVA" formControlName="tauxTVA">
+                  </div>
+              </div>
+              <div class="row mb-3">
+                  <div class="col">
+                    <label>Code stockage</label>
+                    <select class="form-control"  formControlName="codeStock" >
+                          <!-- <option selected>Sélectionner une catégorie</option> -->
+                          <option *ngFor="let stock of stocks" value={{stock.id}}>{{stock.codeStock}}</option>
+                          
+                        </select>
+                    <!-- <input type="text" class="form-control" placeholder="code de stockage" formControlName="codeStock"> -->
+                  </div>
+                  
+                  <div class="col">
+                    <label>Categories</label>
+                      <select class="form-control" formControlName="categorieId" >
+                          <!-- <option selected>Sélectionner une catégorie</option> -->
+                          <option *ngFor="let categorie of categories" value={{categorie.id}}>{{categorie.nom}}</option>
+                          
+                        </select>
+                  </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col">
+                    <label>Image</label>
+                    <input type="text" (change)="onFileSelected($event)" class="form-control" placeholder="Copiez l'url de l'image" formControlName="urlImage">
                 </div>
-                
+                <div class="col">
+                  <label>Quantitée stockée</label>
+                  <input type="number" class="form-control" placeholder="Taux TVA" formControlName="quantite">
+                </div>
+              </div>
+              
               </form>
         </div>
     </div>

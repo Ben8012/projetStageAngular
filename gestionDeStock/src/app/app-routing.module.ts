@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DetailArticleMoveStockComponent } from './composants/detail-article-move-stock/detail-article-move-stock.component';
-import { DetailsClientsFournisseursComponent } from './composants/details-clients-fournisseurs/details-clients-fournisseurs.component';
-import { NouveauClientFournisseurComponent } from './composants/nouveau-client-fournisseur/nouveau-client-fournisseur.component';
-import { NouvelleCmdClientFournisseurComponent } from './composants/nouvelle-cmd-client-fournisseur/nouvelle-cmd-client-fournisseur.component';
+import { NouveauClientFournisseurComponent } from './pages/fournisseurs/nouveau-preparateur-fournisseur/nouveau-client-fournisseur.component';
+import { NouvelleCmdClientFournisseurComponent } from './pages/commandes/nouvelle-cmd-client/nouvelle-cmd-client-fournisseur.component';
 import { NouvelArticleComponent } from './pages/articles/nouvel-article/nouvel-article.component';
 import { PageArticleComponent } from './pages/articles/page-article/page-article.component';
 import { NouvelleCategorieComponent } from './pages/categories/nouvelle-categorie/nouvelle-categorie.component';
 import { PageCategorieComponent } from './pages/categories/page-categorie/page-categorie.component';
-import { PageClientComponent } from './pages/page-preparateur/page-client/page-preparateur.component';
+import { PageClientComponent } from './pages/preparateur/page-client/page-preparateur.component';
 import { PageFournisseursComponent } from './pages/fournisseurs/page-fournisseurs/page-fournisseurs.component';
 import { PageMovestockComponent } from './pages/movstock/page-movestock/page-movestock.component';
-import { PageCmdClientFournisseurComponent } from './pages/page-cmd-client-fournisseur/page-cmd-client-fournisseur.component';
-import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
-import { PageInscriptionComponent } from './pages/page-inscription/page-inscription.component';
-import { PageLoginComponent } from './pages/page-login/page-login.component';
-import { PageStatistiquesComponent } from './pages/page-statistiques/page-statistiques.component';
+import { PageCmdClientFournisseurComponent } from './pages/commandes/page-cmd-client/page-cmd-client-fournisseur.component';
+import { PageDashboardComponent } from './pages/dashboard/page-dashboard.component';
+import { PageInscriptionComponent } from './pages/inscription/page-inscription.component';
+import { PageLoginComponent } from './pages/login/page-login.component';
+import { PageStatistiquesComponent } from './pages/statistiques/page-statistiques.component';
 import { ChangerMotDePasseComponent } from './pages/profil/changer-mot-de-passe/changer-mot-de-passe.component';
 import { PageProfilComponent } from './pages/profil/page-profil/page-profil.component';
-import { NouvelUtilisateurComponent } from './pages/utilisateurs/nouvel-utilisateur/nouvel-utilisateur.component';
-import { PageUtilisateursComponent } from './pages/utilisateurs/page-utilisateurs/page-utilisateurs.component';
+import { NouvelUtilisateurComponent } from './pages/profil/modifier-profil/nouvel-utilisateur.component';
+import { PageUtilisateursComponent } from './pages/clients/page-clients/page-utilisateurs.component';
 import { ApplicationGuardService } from './services/guard/application-guard.service';
 import { CommandePreparateurComponent } from './pages/preparateur/commande-preparateur/commande-preparateur.component';
+import { ModifierArticleComponent } from './pages/articles/modifier-article/modifier-article.component';
+import { ResolverInfosFormationService } from './services/resolvers/modifier-artcile.resolver';
 
 const routes: Routes = [
 
@@ -44,6 +44,14 @@ const routes: Routes = [
       {
         path:'nouvelarticle',
         component : NouvelArticleComponent,
+        canActivate : [ApplicationGuardService]
+      },
+      {
+        path:'modifierarticle/:id',
+        resolve :{
+          datas : ResolverInfosFormationService
+        },
+        component : ModifierArticleComponent,
         canActivate : [ApplicationGuardService]
       },
       {
@@ -142,11 +150,6 @@ const routes: Routes = [
       {
         path:'modifierprofil', 
         component : NouvelUtilisateurComponent,
-        canActivate : [ApplicationGuardService]
-      },
-      {
-        path:'detailsclient/:id', 
-        component : DetailsClientsFournisseursComponent,
         canActivate : [ApplicationGuardService]
       },
       {

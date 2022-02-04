@@ -1,8 +1,10 @@
 <main class="col-md-12 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Liste des articles</h1>
+      Nombre de commmandes : {{nbComandes}}
+      <button type="button" class="btn btn-primary text-nodeco"(click)="goPanier()">Mon panier</button>
       <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group me-2">
+        <div *ngIf="user.role == roles.admin || user.role==roles.preparateur" class="btn-group me-2">
           <button type="button" class="btn btn-sm btn-outline-secondary" (click)="nouvelArticle()">
               <i class="fas fa-plus"></i>
               &nbsp;Nouveau
@@ -28,15 +30,16 @@
         </div>
         <div class="row mb-1 mr-0  custom-border">
             <div class="col-md-2 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Image</div>
-            <div class="col-md-3 text-bolt text-underline text-center  mb-1 mt-1">Prix</div>
-            <div class="col-md-3 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Infos</div>
+            <div class="col-md-3 text-bolt text-underline text-center custom-border-right  mb-1 mt-1">Infos</div>
+            <div class="col-md-3 text-bolt text-underline text-center custom-border-right  mb-1 mt-1">Prix</div>
             <div class="col-md-4 text-bolt text-underline text-center">Commander</div>
         </div>
 
+   <div class="row p-3" style="max-height:450px; overflow-y: scroll;">
         <div *ngFor="let article of newArticles">
-            <div class="accordion row" id="accordion">
+            <div class="accordion row" id="accordion" >
                 <div class="card-header" id="client{{article.id}}"></div>
-                <button class="btn btn-link btn-block col-md-8" 
+                <button class="btn btn-link btn-block col-md-9" 
                         style="text-decoration: none;" 
                         type="button" 
                         data-toggle="collapse" 
@@ -49,27 +52,27 @@
                         <div class="col-md-3 mb-1 mt-1 custom-border-right text-center">
                             <img [src]="'assets/images/'+article.urlImage" width="100px" height="100px"/>
                         </div>
-                        <div class="col-md-4 mb-1 mt-1">
+                        <div class="col-md-4 custom-border-right mb-1 mt-1">
+                            <div class="row">
+                                <div class="col-md-12 m-2"> <h5>{{article.designation}} </h5></div>           
+                                <div class="col-md-12 m-2"> {{article.categorie.nom}} {{article.categorie.description}}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-1 mt-1 custom-border-right">
                             <div class="col">
-                                <div class="col-md-12 m-4"><h4>{{article.prixTTC}} €</h4></div>
+                                <div class="col-md-12 m-3"><h4>{{article.prixTTC}} €</h4></div>
                             </div>
                         </div>
 
-                        <div class="col-md-5 custom-border-right mb-1 mt-1">
-                            <div class="row">
-                                <div class="col-md-12 m-2">{{article.categorie.nom}} </div>           
-                                <div class="col-md-12 m-2">{{article.categorie.description}}</div>
-                            </div>
-                        </div>
                     </div>
                 </button> 
-                <div class="col-md-4  ">
+                <div class="col-md-3">
                     <div class="text-center ">
                         <label for="floatingInput">Quantité</label>
-                        <input type="text" class="form-control" id="floatingInput" [(ngModel)]="quantite">
+                        <input type="number" class="form-control" [(ngModel)]="article.quantite">
                     </div> 
                     <div class=" text-center">
-                        <button type="button" class="btn btn-link" style="text-decoration: none;" data-toggle="collapse" (click)="ajouterPanier(article.id)" >
+                        <button  type="button" class="btn btn-link" style="text-decoration: none;" (click)="ajouterPanier(article)" >
                             <div> <i class="fas fa-shopping-basket"></i></div>
                             <div>Ajouter au panier</div>
                         </button>
@@ -77,7 +80,7 @@
                 </div>
                    
 
-                <div id="collapse{{article.id}}" 
+                <div *ngIf="user.role == roles.admin" id="collapse{{article.id}}" 
                     class="collapse" 
                     [attr.aria-labelledby]="'#client'+article.id" 
                     data-parent="#accordion" 
@@ -86,7 +89,7 @@
 
                         <div class="row mb-1 mr-0  custom-border">
                             <div class="col-md-4 p-4 custom-border-right mb-1 mt-1 text-center">
-                                <button type="button" class="btn btn-link " style="text-decoration: none;">
+                                <button type="button" class="btn btn-link " style="text-decoration: none;" (click)="modifier(article.id)">
                                     <div> <i class="fas fa-pencil-alt"></i></div>
                                     <div>Modifier</div>
                                 </button>
@@ -94,7 +97,7 @@
                             <div class="col-md-4 p-2 custom-border-right text-center">
                                 <div class="row">
                                     <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
-                                    <div class="col-md-11">Code : {{article.categorie.codeCategorie}}</div>
+                                    <div class="col-md-11">Categories: {{article.categorie.nom}}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
@@ -102,15 +105,15 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
-                                    <div class="col-md-11" >Désignation : {{article.designation}}</div>
+                                    <div class="col-md-11" >Zone Stock : {{article.stock.codeStock}}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-1"><i class="fas fa-dollar-sign custom-icon"></i></div>
-                                    <div class="col-md-11">Prix HTVA : {{article.prixHTVA}}€</div>
+                                    <div class="col-md-11">Taux TVA : {{article.prixHTVA}}%</div>
                                 </div>
                             </div>
                             <div class="col-md-4 p-4 mb-1 mt-1 text-center">
-                                <button type="button" class="btn btn-link" style="text-decoration: none;color: red;">
+                                <button type="button" class="btn btn-link" style="text-decoration: none;color: red;" (click)="supprimer(article.id)">
                                     <div><i class="fas fa-trash-alt"></i></div>
                                     <div>Supprimer</div>
                                 </button>  
@@ -122,7 +125,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
         <div class="row mb-3" style="text-align: center;">
             <app-pagination></app-pagination>
         </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiCategorieService } from 'src/app/services/api-categorie.service';
+import { ApiCategorieService } from 'src/app/services/api/api-categorie.service';
 
 @Component({
   selector: 'app-nouvelle-categorie',

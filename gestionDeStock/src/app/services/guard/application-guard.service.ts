@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
-import { ApiUtilisateurService } from '../api-utilisateur.service';
+import { ApiUtilisateurService } from '../api/api-utilisateur.service';
 import { UserSessionService } from '../user_session/user-session.service';
 
 @Injectable({

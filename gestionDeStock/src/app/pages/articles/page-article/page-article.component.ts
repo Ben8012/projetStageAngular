@@ -5,10 +5,11 @@ import { AjoutPanier } from 'src/app/models/article/ajoutPanier';
 import { Article } from 'src/app/models/article/article';
 import { AuthUser } from 'src/app/models/auth/auth-user';
 import { Categorie } from 'src/app/models/categorie/categories';
+import { Commande } from 'src/app/models/commande/commande';
 import { UserWithAdresse } from 'src/app/models/utilisateur/userWithAdresse';
-import { ApiArticleService } from 'src/app/services/api-article.service';
-import { ApiCategorieService } from 'src/app/services/api-categorie.service';
-import { ApiCommandeService } from 'src/app/services/api-commande.service';
+import { ApiArticleService } from 'src/app/services/api/api-article.service';
+import { ApiCategorieService } from 'src/app/services/api/api-categorie.service';
+import { ApiCommandeService } from 'src/app/services/api/api-commande.service';
 import { RoleUtilisateurEnum } from 'src/app/services/enums/role-utilisateur.enum';
 import { UserSessionService } from 'src/app/services/user_session/user-session.service';
 
@@ -27,7 +28,8 @@ export class PageArticleComponent implements OnInit {
   public categorieValue : any
   public user : AuthUser = new AuthUser("");
   public roles = RoleUtilisateurEnum 
-  public quantite : number = 0
+  public commandes : Commande[]=[]
+  public nbComandes : number =0
 
   constructor(
     private router:Router,
@@ -52,10 +54,8 @@ export class PageArticleComponent implements OnInit {
       })
   }
 
-
   nouvelArticle() : void{
     this.router.navigate(['nouvelarticle']);
-   
   }
 
   getAllArticles(){
@@ -88,21 +88,37 @@ export class PageArticleComponent implements OnInit {
     }
   }
 
-  ajouterPanier(id : number){
-      let ajouterPanier : AjoutPanier = new AjoutPanier("");
-      ajouterPanier.articleId = id
-      ajouterPanier.quantite = this.quantite
-      if(this.user.role == this.roles.client){
-        ajouterPanier.clientId = this.user.id
-      }else if(this.user.role == this.roles.fournisseur){
-        ajouterPanier.fournisseurId = this.user.id
-      }else if(this.user.role == this.roles.preparateur){
-        ajouterPanier.preparateurId = this.user.id
-      }else if(this.user.role == this.roles.admin){
-        ajouterPanier.adminId = this.user.id
-      }
-      
+  ajouterPanier( article : Article){
+   
+      // let ajouterPanier : AjoutPanier = new AjoutPanier("");
+      // ajouterPanier.articleId = article.id
+      // ajouterPanier.quantite = article.quantite
+      // if(this.user.role == this.roles.client){
+      //   ajouterPanier.clientId = this.user.id
+      // }else if(this.user.role == this.roles.fournisseur){
+      //   ajouterPanier.fournisseurId = this.user.id
+      // }else if(this.user.role == this.roles.preparateur){
+      //   ajouterPanier.preparateurId = this.user.id
+      // }else if(this.user.role == this.roles.admin){
+      //   ajouterPanier.adminId = this.user.id
+      // }
+      // this.apiCommandeService.ajouterPanier(ajouterPanier).subscribe();
+      this.nbComandes++
+  }
 
-      this.apiCommandeService.ajouterPanier(ajouterPanier).subscribe();
+  modifier(id: number){
+    this.router.navigate(['modifierarticle/'+id])
+  }
+
+  supprimer(articleId : number){
+    this.apiArticleService.softDeleteArticle(articleId).subscribe(
+      datas => {
+       this.newArticles = datas;
+      }
+    )
+  }
+
+  goPanier(){
+    this.router.navigate(['nouvellecommandeclient'])
   }
 }

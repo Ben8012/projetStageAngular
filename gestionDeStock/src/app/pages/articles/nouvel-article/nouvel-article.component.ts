@@ -3,8 +3,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/models/article/article';
 import { Categorie } from 'src/app/models/categorie/categories';
-import { ApiArticleService } from 'src/app/services/api-article.service';
-import { ApiCategorieService } from 'src/app/services/api-categorie.service';
+import { Stock } from 'src/app/models/stock/stock';
+import { ApiArticleService } from 'src/app/services/api/api-article.service';
+import { ApiCategorieService } from 'src/app/services/api/api-categorie.service';
+import { ApiStockService } from 'src/app/services/api/api-stock.service';
 
 
 @Component({
@@ -16,30 +18,49 @@ export class NouvelArticleComponent implements OnInit {
   
   public categories : Categorie[]=[]
   public formNouvelArticle: any
+  public stocks : Stock[]=[]
 
   constructor(
     private router : Router,
     private formBuilber: FormBuilder,
     private apiArticleService : ApiArticleService,
-    private apiCategorieService : ApiCategorieService
+    private apiCategorieService : ApiCategorieService,
+    private apiStockService : ApiStockService,
   ) { }
 
   ngOnInit(): void {
     this.getAllCategories();
+    this.getAllStocks();
 
     this.formNouvelArticle = this.formBuilber.group({
-      codeArticle :['test',[Validators.required]],
-      designation :['test',[Validators.required]],
-      prixHTVA :[20,[Validators.required]],
-      tauxTVA :[21,[Validators.required]],
-      prixTTC :[30,[Validators.required]],
-      categorieId :[1,[Validators.required]],
-      urlImage : ['test url',[Validators.required]]
+      codeArticle :[,[Validators.required]],
+      designation :[,[Validators.required]],
+      prixHTVA :[,[Validators.required]],
+      tauxTVA :[,[Validators.required]],
+      prixTTC :[,[Validators.required]],
+      categorieId :[,[Validators.required]],
+      urlImage : [,[Validators.required]],
+      codeStock : [,[Validators.required]],
+      quantite : [,[Validators.required]],
     })
   }
 
   saveClick():void{
-    this.formNouvelArticle.valid ? this.apiArticleService.addArticle(this.formNouvelArticle.value).subscribe() :'';
+    if(this.formNouvelArticle.valid ){
+      let newArticle : Article = new Article('')
+      newArticle.codeArticle = this.formNouvelArticle.value.codeArticle
+      newArticle.designation = this.formNouvelArticle.value.designation
+      newArticle.prixHTVA = this.formNouvelArticle.value.prixHTVA
+      newArticle.tauxTVA = this.formNouvelArticle.value.tauxTVA
+      newArticle.prixTTC = this.formNouvelArticle.value.prixTTC
+      newArticle.categorieId = this.formNouvelArticle.value.categorieId
+      newArticle.urlImage = this.formNouvelArticle.value.urlImage
+      newArticle.stock  = new Stock('')
+      newArticle.stock.codeStock = this.formNouvelArticle.value.codeStock
+      newArticle.stock.quantite = this.formNouvelArticle.value.quantite
+      this.apiArticleService.addArticle(newArticle).subscribe()
+        
+    }
     this.router.navigate(['articles']);
   }
 
@@ -55,6 +76,15 @@ export class NouvelArticleComponent implements OnInit {
 
   onFileSelected(event :any){
     this.selectedFile = event.target.files[0];
+  }
+
+  getAllStocks(){
+    this.apiStockService.getAllStocks().subscribe(
+      datas => {
+        this.stocks = datas;
+        console.log(this.stocks)
+      }
+    )
   }
 
 }

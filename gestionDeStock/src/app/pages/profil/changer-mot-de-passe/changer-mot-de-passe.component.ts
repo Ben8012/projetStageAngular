@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthUser } from 'src/app/models/auth/auth-user';
-import { ApiUtilisateurService } from 'src/app/services/api-utilisateur.service';
+import { ApiUtilisateurService } from 'src/app/services/api/api-utilisateur.service';
 import { UserSessionService } from 'src/app/services/user_session/user-session.service';
 
 @Component({

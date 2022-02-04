@@ -6,13 +6,15 @@ export class Article{
     id : number;
     codeArticle : string;
     designation: string;
-    urlImage: Blob;
+    urlImage: string;
     prixHTVA: number;
     prixTTC: number;
     tauxTVA: number;
     categorieId: number;
-    categorie : Categorie
-    stock : Stock
+    categorie : Categorie;
+    stock : Stock;
+    quantite : number;
+    
 
     constructor(data : any ){
         this.id = data.id;
@@ -23,7 +25,9 @@ export class Article{
         this.prixTTC = data.prixTTC;
         this.tauxTVA = data.tauxTVA;
         this.categorieId = data.categorieId;
-        this.categorie = data.categorie
-        this.stock = data.stock
+        this.categorie = data.categorie;
+        this.stock = data.stock;
+        this.quantite = data.quantite;
+     
     }
 }
