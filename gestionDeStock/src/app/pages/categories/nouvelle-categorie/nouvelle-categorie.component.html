@@ -3,28 +3,40 @@
         <div class="col-md-12 mb-3 ">
             <h2>Nouvelle catégorie </h2>
         </div>
-        <div class="col md-12">
-            <form [formGroup]="formNouvelCategorie">
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="">Nom </label>
-                        <input type="text" class="form-control" placeholder="Nom de la Catégorie" formControlName="nom">
+
+        <hr>
+        <div class="row m-4">
+            <div class="col md-12">
+                <div class="row ">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8">
+                        <form [formGroup]="formNouvelCategorie">
+                            <div class="row mb-3 p-2">
+                                <div class="col">
+                                    <label for="">Nom </label>
+                                    <input type="text" class="form-control" placeholder="Nom de la catégorie" formControlName="nom">
+                                </div>
+                            </div>  
+                            <div class="row mb-3 p-2">
+                                <div class="col">
+                                    <label for="">Code </label>
+                                    <input type="text" class="form-control" placeholder="Code de la catégorie" formControlName="codeCategorie">
+                                </div>
+                            </div>  
+                            <div class="row mb-3 p-2">
+                                <div class="col">
+                                    <label for="">Description</label>
+                                    <input type="text" class="form-control" placeholder="Description de la catégorie" formControlName="description">
+                                </div>
+                            </div>            
+                        </form>
                     </div>
-                </div>  
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="">Code </label>
-                        <input type="text" class="form-control" placeholder="Code Catégorie" formControlName="codeCategorie">
-                    </div>
-                </div>  
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="">Description</label>
-                        <input type="text" class="form-control" placeholder="Description" formControlName="description">
-                    </div>
-                </div>            
-            </form>
+                </div>
+                
+            </div>
+            <div class="col-md-6"></div>
         </div>
+        
     </div>
     <div class="col-md-12" style="text-align: end;">
         <button class="btn btn-danger m-4" (click)="cancelClick()">

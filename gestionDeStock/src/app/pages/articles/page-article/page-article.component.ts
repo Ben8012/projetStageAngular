@@ -30,6 +30,7 @@ export class PageArticleComponent implements OnInit {
   public roles = RoleUtilisateurEnum 
   public commandes : Commande[]=[]
   public nbComandes : number =0
+  public total : number = 0
 
   constructor(
     private router:Router,
@@ -104,6 +105,7 @@ export class PageArticleComponent implements OnInit {
       }
       this.apiCommandeService.ajouterPanier(ajouterPanier).subscribe();
       this.nbComandes++
+      this.total += (article.prixTTC * article.quantite)
   }
 
   modifier(id: number){

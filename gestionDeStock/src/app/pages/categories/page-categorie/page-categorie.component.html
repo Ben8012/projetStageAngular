@@ -12,7 +12,7 @@
         
     </div>
     <div class="col m-3">
-        <div class="row text-center text-bolt text-underline custom-border mb-1 mr-0" >
+        <div class="row text-center text-bolt text-underline custom-border mb-1 mr-0 p-2" >
             <div class="col-md-3 custom-border-right">Code</div>
             <div class="col-md-3 custom-border-right">Nom</div>
             <div class="col-md-4 custom-border-right">Desciption</div>
@@ -20,14 +20,14 @@
         </div>
     </div>
     <div class="col m-3" *ngFor="let categorie of categories">
-        <div class="row custom-border text-center mb-3 p-3">
-            <div class="col-md-3 custom-border-right">
+        <div class="row custom-border text-center mb-3 p-2">
+            <div class="col-md-3 p-3 custom-border-right">
                 {{categorie.codeCategorie}}
             </div>
-            <div class="col-md-3 custom-border-right">
+            <div class="col-md-3 p-3 custom-border-right">
                 {{categorie.nom}}
             </div>
-            <div class="col-md-4 custom-border-right">
+            <div class="col-md-4 p-3 custom-border-right">
                {{categorie.description}}
             </div>
             <div class="col-md-2 ">

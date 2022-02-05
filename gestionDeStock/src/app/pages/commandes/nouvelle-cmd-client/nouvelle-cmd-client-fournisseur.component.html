@@ -33,7 +33,7 @@
     
                 <div class="col-md-2 custom-border-right mb-1 mt-1">
                     <div class="col-md-12 text-center">
-                        <h5>Nom</h5>
+                        <h5>Image</h5>
                     </div>
                 </div>
                 <div class="col-md-2 custom-border-right mb-1 mt-1">
@@ -68,31 +68,34 @@
     </div>
     <div class="col-md-12 p-3" >
         <div class="row p-3" style="max-height:400px; overflow-y: scroll;">
-            <div class="row mb-1 mr-0  custom-border" *ngFor="let commande of commandes">
+            <div class="row mb-1 mr-0 p-3 custom-border" *ngFor="let commande of commandes">
     
                 <div class="col-md-2 custom-border-right text-center mb-1 mt-1">
                     <img [src]="'assets/images/'+commande.article.urlImage" width="50px" height="50"/>
                 </div>
                 <div class="col-md-2 custom-border-right mb-1 mt-1">
-                    <div class="col-md-12 text-center">
+                    <div class="col-md-12 m-2 text-center">
                         <h5>{{commande.article.designation}}</h5>
                     </div>
                 </div>
             
                 <div class="col-md-2 custom-border-right mb-1 mt-1">
-                    <div class="col-md-12 text-center">
+                    <div class="col-md-12 m-2 text-center">
                         <h5>{{commande.article.prixTTC}} €</h5>
                     </div>
                  </div>
             
                 <div class="col-md-2 mb-1 mt-1 custom-border-right">
-                    <div class="col-md-12 text-center">
+                    <div class="col-md-12 m-2 text-center">
                         <h5>{{commande.quantite}}</h5> 
                     </div>
                 </div>
                 <div class="col-md-2 mb-1 mt-1 custom-border-right">
-                    <div class="col-md-12 text-center">
-                        <h5>{{commande.status}}</h5> 
+                    <div class="col-md-12 text-center m-2">
+                        <div *ngIf="commande.status == status.attente"> <h5>Confirmer </h5> </div>
+                        <div *ngIf="commande.status == status.livraison"> <h5>Livraison</h5> </div>
+                        <div *ngIf="commande.status == status.prepa"> <h5> Préparation</h5> </div>
+                        <div *ngIf="commande.status == status.recu"> <h5> Terminer</h5> </div>
                     </div>
                 </div>
             
@@ -108,7 +111,7 @@
                         </div>
                         <div *ngIf="commande.status == status.attente" class="col-md-5 text-center">
                             <div class=" text-center">
-                                <button type="button" class="btn btn-link" style="text-decoration: none; color: red;" (click)="annuler(commande.id)" >
+                                <button type="button" class="btn btn-link" style="color: red;" (click)="annuler(commande.id)" >
                                     <div> <i class="fas fa-trash-alt"></i></div>
                                     <div>annuler</div>
                                 </button>
@@ -123,8 +126,15 @@
                             </div> 
                         </div>
                         <div *ngIf="commande.status == status.recu" class="col-md-12 text-center">
-                            <div class=" text-center">
-                                Merci et a bientot
+                            <div class=" text-center" style="text-decoration: none; color:black;">
+                                <i class="far fa-calendar-check"></i>
+                                <div>Terminer</div>
+                            </div> 
+                        </div>
+                        <div *ngIf="commande.status == status.prepa" class="col-md-12 text-center">
+                            <div class=" text-center" style="text-decoration: none; color:orange;">
+                                <i class="fas fa-hourglass-half"></i>
+                                <div>preparation</div>
                             </div> 
                         </div>
 

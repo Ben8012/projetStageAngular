@@ -1,8 +1,8 @@
 <main class="col-md-12 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Liste des articles</h1>
-      Nombre de commmandes : {{nbComandes}}
-      <button type="button" class="btn btn-primary text-nodeco"(click)="goPanier()">Mon panier</button>
+     
+      
       <div class="btn-toolbar mb-2 mb-md-0">
         <div *ngIf="user.role == roles.admin || user.role==roles.preparateur" class="btn-group me-2">
           <button type="button" class="btn btn-sm btn-outline-secondary" (click)="nouvelArticle()">
@@ -17,17 +17,34 @@
 
 <div class="col">
     <div class="col m-3" >
-        <div class="col-md-12  mb-4 mr-0">
-           
-                <h3 class="text-center">Sélectionner une catégorie</h3>
-                <select  class="form-control " [(ngModel)]="categorieValue" (ngModelChange)="getCat(categorieValue)" >
-                    <option [ngValue]="">Toutes les categories</option>
+        <div class="row">
+            <div class="col-md-4 text-center">
+               
+            </div>
+            <div class="col-md-4  mb-4 mr-0">
+                <h3 class="text-center">Trier par catégorie</h3>
+                <select  class="form-control text-center " [(ngModel)]="categorieValue" (ngModelChange)="getCat(categorieValue)" >
+                    <option [ngValue]="">Tout</option>
                     <option *ngFor="let categorie of categories" [ngValue]="categorie">
                         {{categorie.nom}}
                     </option>
                 </select>
-               
+            </div>
+            <div class="col-md-4 text-center">
+                <div style ='text-align: end;' >
+                    <button type="button" class="btn btn-sm btn-outline-secondary "(click)="goPanier()">
+                        <i class="fas fa-shopping-basket">
+                             &nbsp; Mon panier  
+                        </i>
+                    </button>
+                </div>
+                <div class="m-3">
+                    <h4>Montant {{total}}€</h4>
+                </div>
+                
+            </div>
         </div>
+       
         <div class="row mb-1 mr-0  custom-border">
             <div class="col-md-2 text-bolt text-underline text-center custom-border-right mb-1 mt-1">Image</div>
             <div class="col-md-3 text-bolt text-underline text-center custom-border-right  mb-1 mt-1">Infos</div>
@@ -37,8 +54,8 @@
 
    <div class="row p-3" style="max-height:450px; overflow-y: scroll;">
         <div *ngFor="let article of newArticles">
-            <div class="accordion row" id="accordion" >
-                <div class="card-header" id="client{{article.id}}"></div>
+            <div class="accordion row custom-border m-1" id="accordion" >
+                <div id="client{{article.id}}"></div>
                 <button class="btn btn-link btn-block col-md-9" 
                         style="text-decoration: none;" 
                         type="button" 
@@ -60,7 +77,7 @@
                         </div>
                         <div class="col-md-4 mb-1 mt-1 custom-border-right">
                             <div class="col">
-                                <div class="col-md-12 m-3"><h4>{{article.prixTTC}} €</h4></div>
+                                <div class="col-md-12 mt-4"><h4>{{article.prixTTC}} €</h4></div>
                             </div>
                         </div>
 
@@ -69,7 +86,14 @@
                 <div class="col-md-3">
                     <div class="text-center ">
                         <label for="floatingInput">Quantité</label>
-                        <input type="number" class="form-control" [(ngModel)]="article.quantite">
+                        <div class="row mt-1">
+                            <div class=" col-md-2"></div>
+                            <div class=" col-md-8">
+                                <input type="number" class="form-control text-center" [(ngModel)]="article.quantite">
+                            </div>
+                            <div class=" col-md-2"></div>
+                        </div>
+                        
                     </div> 
                     <div class=" text-center">
                         <button  type="button" class="btn btn-link" style="text-decoration: none;" (click)="ajouterPanier(article)" >
@@ -113,7 +137,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 p-4 mb-1 mt-1 text-center">
-                                <button type="button" class="btn btn-link" style="text-decoration: none;color: red;" (click)="supprimer(article.id)">
+                                <button type="button" class="btn btn-link valid-button" style="text-decoration: none;color: red;" (click)="supprimer(article.id)">
                                     <div><i class="fas fa-trash-alt"></i></div>
                                     <div>Supprimer</div>
                                 </button>  
