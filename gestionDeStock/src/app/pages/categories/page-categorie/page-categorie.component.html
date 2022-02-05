@@ -3,28 +3,51 @@
         <div class="col-md-8 p-0">
             <h1>Liste des catégories</h1>
         </div>
-        <div class="col-md-4" style="text-align: end;">
-            <app-boutton-action (clickEvent)="nouvelCategorie()"></app-boutton-action>
+        <div class="col-md-4" style="text-align: end;" >
+            <button type="button" class="btn btn-primary" (click)="nouvelCategorie()">
+                <i class="fas fa-plus"></i>&nbsp;
+                Nouveau
+            </button>
         </div>
+        
     </div>
     <div class="col m-3">
         <div class="row text-center text-bolt text-underline custom-border mb-1 mr-0" >
-            <div class="col-md-4 custom-border-right">Code catégorie </div>
+            <div class="col-md-3 custom-border-right">Code</div>
             <div class="col-md-3 custom-border-right">Nom</div>
-            <div class="col-md-5">Desciption catégorie </div>
+            <div class="col-md-4 custom-border-right">Desciption</div>
+            <div class="col-md-2">Action </div>
         </div>
     </div>
     <div class="col m-3" *ngFor="let categorie of categories">
         <div class="row custom-border text-center mb-3 p-3">
-            <div class="col-md-4 custom-border-right">
+            <div class="col-md-3 custom-border-right">
                 {{categorie.codeCategorie}}
             </div>
             <div class="col-md-3 custom-border-right">
                 {{categorie.nom}}
             </div>
-            <div class="col-md-5 ">
+            <div class="col-md-4 custom-border-right">
                {{categorie.description}}
             </div>
+            <div class="col-md-2 ">
+                <!-- <div class="col-md-5 text-center">
+                    <div class=" text-center">
+                        <button type="button" class="btn btn-link" style="text-decoration: none;" >
+                            <div> <i class="fas fa-check-circle"></i></div>
+                            <div>modififez</div>
+                        </button>
+                    </div> 
+                </div> -->
+                <div  class="col-md-12 text-center">
+                    <div class=" text-center">
+                        <button type="button" class="btn btn-link" style="text-decoration: none; color: red;" (click)="supprimer(categorie.id)" >
+                            <div> <i class="fas fa-trash-alt"></i></div>
+                            <div>supprimer</div>
+                        </button>
+                    </div> 
+                </div>
+             </div>
         </div>
     </div>
     <div class="row mb-3" style="text-align: center;">

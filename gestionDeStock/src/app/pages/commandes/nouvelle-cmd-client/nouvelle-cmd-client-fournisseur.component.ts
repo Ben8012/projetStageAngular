@@ -41,10 +41,11 @@ export class NouvelleCmdClientFournisseurComponent implements OnInit {
   }
 
   getCommandeByUser(){
+    console.log(this.user.id)
     this.apiCommandeService.getCommandeByUser(this.user.id).subscribe(
       datas => {
         this.commandes = datas;
-        console.log(this.commandes);
+        console.log( this.commandes);
         this.calculTotal();
       }, error => {
         }

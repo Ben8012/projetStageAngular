@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Categorie } from '../../models/categorie/categories';
 
-const apiLink="http://localhost:3000/categorie"
+const apiLink="http://localhost:3000/categorie/"
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +23,9 @@ export class ApiCategorieService {
     console.log(addCategorie)
     return this.http.post<Categorie>(apiLink, addCategorie);
   }
+
+  deleteCategorie(id : number):Observable<Categorie[]>{
+    return this.http.delete<Categorie[]>(apiLink+id)
+  } 
 
 }

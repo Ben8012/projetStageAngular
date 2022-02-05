@@ -22,9 +22,9 @@ export class NouvelleCategorieComponent implements OnInit {
   ngOnInit(): void {
 
     this.formNouvelCategorie = this.formBuilber.group({
-      nom :['test code article',[Validators.required]],
-      codeCategorie :['test designation',[Validators.required]],
-      description :['test description',[Validators.required]],
+      nom :[,[Validators.required]],
+      codeCategorie :[,[Validators.required]],
+      description :[,[Validators.required]],
     })
   }
 

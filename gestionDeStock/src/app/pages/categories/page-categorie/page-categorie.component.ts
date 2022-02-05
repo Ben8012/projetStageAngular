@@ -26,6 +26,20 @@ export class PageCategorieComponent implements OnInit {
   }
 
   getAllCategories(){
-    this.apiCategorieService.getAllCategories().subscribe(datas => {this.categories = datas;});
+    this.apiCategorieService.getAllCategories().subscribe(
+      datas => {
+        this.categories = datas;
+        //console.log(this.categories)
+      }
+    );
+  }
+
+  supprimer(categorieId : number){
+    this.apiCategorieService.deleteCategorie(categorieId).subscribe(
+      datas => {
+        this.categories = datas
+      }
+    )
+
   }
 }

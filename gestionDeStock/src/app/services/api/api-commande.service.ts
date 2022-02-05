@@ -4,6 +4,7 @@ import {Article} from '../../models/article/article';
 import { Observable } from 'rxjs';
 import { Categorie } from '../../models/categorie/categories';
 import { AjoutPanier } from '../../models/article/ajoutPanier';
+import { Commande } from 'src/app/models/commande/commande';
 
 const apiLink="http://localhost:3000/commande"
 
@@ -16,13 +17,13 @@ export class ApiCommandeService {
     private http:HttpClient
   ) { }
 
-  
+  //client
   ajouterPanier(ajouterPanier : AjoutPanier){
     return this.http.post(apiLink+'/ajouterpanier',ajouterPanier);
   }
 
-  getCommandeByUser(id : number): Observable<any[]>{
-    return this.http.get<any[]>(apiLink+'/commandebyid/'+id)
+  getCommandeByUser(id : number): Observable<Commande[]>{
+    return this.http.get<Commande[]>(apiLink+'/commandebyid/'+id)
   }
 
   validerUneCommande(id : number, userId : number):Observable<any[]>{
@@ -37,17 +38,25 @@ export class ApiCommandeService {
     console.log('test')
     return this.http.post<any[]>(apiLink+'/validertoutcommande/'+userId,allCommandeId)
   }
- 
-  getCommandeToDo(userId : number):Observable<any[]>{
-     return this.http.get<any[]>(apiLink+'/getcommandetodo/'+userId)
-   }
-
-   commandePrete(id : number, userId : number):Observable<any[]>{
-    return this.http.get<any[]>(apiLink+'/commandeprete/'+id+'/'+userId)
-  }
 
   commandeRecue(id : number, userId : number):Observable<any[]>{
     return this.http.get<any[]>(apiLink+'/commanderecue/'+id+'/'+userId)
   }
+ 
+  // preparateur
+  getCommandeToDo(userId : number):Observable<any[]>{
+     return this.http.get<any[]>(apiLink+'/getcommandetodo/'+userId)
+   }
+ 
+   commandePrete(id : number, userId : number):Observable<any[]>{
+    return this.http.get<any[]>(apiLink+'/commandeprete/'+id+'/'+userId)
+  }
+
+
+  validerToutCommandePret( allCommandeId : number[],userId : number):Observable<any[]>{
+    console.log('test')
+    return this.http.post<any[]>(apiLink+'/validertoutcommandepret/'+userId,allCommandeId)
+  }
+
 
 }

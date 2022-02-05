@@ -31,9 +31,13 @@ export class CommandePreparateurComponent implements OnInit {
   }
 
   getCommandeToDo(){
+    console.log(this.user.id)
     this.apiCommandeService.getCommandeToDo(this.user.id).subscribe(
       datas => {
         this.commandes = datas;
+        this.commandes.map(
+          c => c.client = c.admin = c.fournisseur = c.preparateur
+          )
         console.log(this.commandes);
       
       }, error => {
@@ -42,17 +46,20 @@ export class CommandePreparateurComponent implements OnInit {
    
   }
 
-  validerTout(){
+  validerToutPret(){
    
-    // this.apiCommandeService.validerToutCommande( this.commandes.map(c => c.id),this.user.id).subscribe(
-    //   datas => {
-    //     this.commandes = datas;
-    //     console.log(this.commandes);
+    this.apiCommandeService.validerToutCommandePret( this.commandes.map(c => c.id),this.user.id).subscribe(
+      datas => {
+        this.commandes = datas;
+        this.commandes.map(
+          c => c.client = c.admin = c.fournisseur = c.preparateur
+          )
+        console.log(this.commandes);
       
-    //   }, error => {
+      }, error => {
 
-    //   }
-    // );
+      }
+    );
   }
 
   cancel(){
@@ -63,7 +70,10 @@ export class CommandePreparateurComponent implements OnInit {
     this.apiCommandeService.commandePrete(id ,this.user.id).subscribe(
       datas => {
         this.commandes = datas;
-        //console.log(this.commandes);
+        this.commandes.map(
+          c => c.client = c.admin = c.fournisseur = c.preparateur
+          )
+          console.log(this.commandes)
        
       }, error => {
 

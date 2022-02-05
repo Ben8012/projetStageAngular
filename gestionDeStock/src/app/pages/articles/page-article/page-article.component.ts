@@ -90,19 +90,19 @@ export class PageArticleComponent implements OnInit {
 
   ajouterPanier( article : Article){
    
-      // let ajouterPanier : AjoutPanier = new AjoutPanier("");
-      // ajouterPanier.articleId = article.id
-      // ajouterPanier.quantite = article.quantite
-      // if(this.user.role == this.roles.client){
-      //   ajouterPanier.clientId = this.user.id
-      // }else if(this.user.role == this.roles.fournisseur){
-      //   ajouterPanier.fournisseurId = this.user.id
-      // }else if(this.user.role == this.roles.preparateur){
-      //   ajouterPanier.preparateurId = this.user.id
-      // }else if(this.user.role == this.roles.admin){
-      //   ajouterPanier.adminId = this.user.id
-      // }
-      // this.apiCommandeService.ajouterPanier(ajouterPanier).subscribe();
+      let ajouterPanier : AjoutPanier = new AjoutPanier("");
+      ajouterPanier.articleId = article.id
+      ajouterPanier.quantite = article.quantite
+      if(this.user.role == this.roles.client){
+        ajouterPanier.clientId = this.user.id
+      }else if(this.user.role == this.roles.fournisseur){
+        ajouterPanier.fournisseurId = this.user.id
+      }else if(this.user.role == this.roles.preparateur){
+        ajouterPanier.preparateurId = this.user.id
+      }else if(this.user.role == this.roles.admin){
+        ajouterPanier.adminId = this.user.id
+      }
+      this.apiCommandeService.ajouterPanier(ajouterPanier).subscribe();
       this.nbComandes++
   }
 
