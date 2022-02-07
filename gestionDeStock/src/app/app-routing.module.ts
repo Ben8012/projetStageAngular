@@ -21,7 +21,9 @@ import { PageUtilisateursComponent } from './pages/clients/page-clients/page-uti
 import { ApplicationGuardService } from './services/guard/application-guard.service';
 import { CommandePreparateurComponent } from './pages/preparateur/commande-preparateur/commande-preparateur.component';
 import { ModifierArticleComponent } from './pages/articles/modifier-article/modifier-article.component';
-import { ResolverInfosFormationService } from './services/resolvers/modifier-artcile.resolver';
+import { ResolverModifierArticleService } from './services/resolvers/modifier-artcile.resolver';
+import { NouvelleCmdFournisseurComponent } from './pages/commandes/nouvelle-cmd-fournisseur/nouvelle-cmd-fournisseur/nouvelle-cmd-fournisseur.component';
+import { ResolverNouvelleCommandeFournisseurService } from './services/resolvers/nouvelle-cmd-fournisseur.resolver';
 
 const routes: Routes = [
 
@@ -49,7 +51,7 @@ const routes: Routes = [
       {
         path:'modifierarticle/:id',
         resolve :{
-          datas : ResolverInfosFormationService
+          datas : ResolverModifierArticleService
         },
         component : ModifierArticleComponent,
         canActivate : [ApplicationGuardService]
@@ -81,7 +83,7 @@ const routes: Routes = [
         }
       },
       {
-        path:'nouvellecommandeclient', 
+        path:'monpanier', 
         component : NouvelleCmdClientFournisseurComponent,
         canActivate : [ApplicationGuardService],
         data:{
@@ -110,7 +112,7 @@ const routes: Routes = [
         }
       },
       {
-        path:'nouvellecommandefournisseur', 
+        path:'monpanier', 
         component : NouvelleCmdClientFournisseurComponent,
         canActivate : [ApplicationGuardService],
         data:{
@@ -155,6 +157,14 @@ const routes: Routes = [
       {
         path:'commandespreparateur', 
         component : CommandePreparateurComponent,
+        canActivate : [ApplicationGuardService]
+      },
+      {
+        path:'nouvellecommandefournisseur/:id', 
+        resolve :{
+          datas : ResolverNouvelleCommandeFournisseurService
+        },
+        component : NouvelleCmdFournisseurComponent,
         canActivate : [ApplicationGuardService]
       },
     ]

@@ -48,8 +48,9 @@ export class ApiCommandeService {
      return this.http.get<any[]>(apiLink+'/getcommandetodo/'+userId)
    }
  
-   commandePrete(id : number, userId : number):Observable<any[]>{
-    return this.http.get<any[]>(apiLink+'/commandeprete/'+id+'/'+userId)
+   commandePrete(userId : number, commandeId : number, quantite : number):Observable<any[]>{
+     //console.log(quantite)
+    return this.http.get<any[]>(apiLink+'/commandeprete/'+userId+'/'+commandeId+'/'+quantite)
   }
 
 

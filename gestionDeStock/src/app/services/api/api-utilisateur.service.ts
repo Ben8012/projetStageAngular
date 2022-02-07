@@ -9,7 +9,7 @@ import { ChangerMotDePasseUtilisateur } from '../../models/auth/changer-mot-de-p
 import { UserWithAdresse } from '../../models/utilisateur/userWithAdresse';
 
 
-const apiLink="http://localhost:3000/utilisateur"
+const apiLink="http://localhost:3000/utilisateur/"
 
 @Injectable({
   providedIn: 'root'
@@ -26,15 +26,15 @@ export class ApiUtilisateurService {
   }
 
   addFournisseur(addFournisseur : Utilisateur){
-    return this.http.post(apiLink+'/addfournisseur',addFournisseur)
+    return this.http.post(apiLink+'addfournisseur',addFournisseur)
   }
 
   updateUtilisateur(id: number,upadateUtilisateur : Utilisateur): Observable<AuthenticationResponse>{
-    return this.http.patch<AuthenticationResponse>(apiLink+'/update/'+id,upadateUtilisateur )
+    return this.http.patch<AuthenticationResponse>(apiLink+'update/'+id,upadateUtilisateur )
   }
  
   login(login : AuthenticationRequest):Observable<AuthenticationResponse>{
-    return this.http.post<AuthenticationResponse>(apiLink+'/login',login)
+    return this.http.post<AuthenticationResponse>(apiLink+'login',login)
   }
 
   getUserByEmail(email?: string): Observable<Utilisateur> {
@@ -42,30 +42,34 @@ export class ApiUtilisateurService {
   }
 
   changerMotDePasse(id : number,changerMotDePasse: ChangerMotDePasseUtilisateur) {
-    return this.http.patch(apiLink+'/changepasswd/'+id,changerMotDePasse);
+    return this.http.patch(apiLink+'changepasswd/'+id,changerMotDePasse);
   }
 
   getAllClient():Observable<UserWithAdresse[]>{
-    return this.http.get<UserWithAdresse[]>(apiLink+'/clients');
+    return this.http.get<UserWithAdresse[]>(apiLink+'clients');
   }
 
   getAllFournisseurs():Observable<UserWithAdresse[]>{
-    return this.http.get<UserWithAdresse[]>(apiLink+'/fournisseurs');
+    return this.http.get<UserWithAdresse[]>(apiLink+'fournisseurs');
   }
 
   getAllPreparateurs():Observable<UserWithAdresse[]>{
-    return this.http.get<UserWithAdresse[]>(apiLink+'/preparateurs');
+    return this.http.get<UserWithAdresse[]>(apiLink+'preparateurs');
   }
 
   deleteClient(id : number){
-    return this.http.delete(apiLink+'/delete/'+id)
+    return this.http.delete(apiLink+'delete/'+id)
   }
 
   getUserById(id : any):Observable<Utilisateur>{
-    return this.http.get<Utilisateur>(apiLink+'/getbyid/'+id)
+    return this.http.get<Utilisateur>(apiLink+'getbyid/'+id)
   }
 
   changeRole(id : number, changeRole : any){
-    return this.http.patch(apiLink+'/changerole/'+id,changeRole)
+    return this.http.patch(apiLink+'changerole/'+id,changeRole)
+  }
+
+  getFournisseurByArticle(articleId : number):Observable<any[]>{
+    return this.http.get<any[]>(apiLink+'fournisseurbyarticleid/'+articleId)
   }
 }

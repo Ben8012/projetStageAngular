@@ -12,9 +12,10 @@ export class Article{
     tauxTVA: number;
     categorieId: number;
     categorie : Categorie;
-    stock : Stock;
     quantite : number;
-    
+    codeStock: string;
+    quantiteStock: number;
+    quantiteStockMin : number
 
     constructor(data : any ){
         this.id = data.id;
@@ -26,8 +27,10 @@ export class Article{
         this.tauxTVA = data.tauxTVA;
         this.categorieId = data.categorieId;
         this.categorie = data.categorie;
-        this.stock = data.stock;
         this.quantite = data.quantite;
+        this.codeStock = data.codeStock;
+        this.quantiteStock = data.quantiteStock;
+        this.quantiteStockMin = data.quantiteStockMin;
      
     }
 }

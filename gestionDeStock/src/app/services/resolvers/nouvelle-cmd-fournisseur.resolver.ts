@@ -8,7 +8,7 @@ import { ApiArticleService } from '../api/api-article.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ResolverModifierArticleService implements Resolve<any>{
+export class ResolverNouvelleCommandeFournisseurService implements Resolve<any>{
 
   constructor(
       public apiArticleService :  ApiArticleService

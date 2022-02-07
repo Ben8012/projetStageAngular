@@ -48,5 +48,6 @@ export class ApiArticleService {
     console.log('test')
     return this.http.post(apiLink+'ajouterpanier',ajouterPanier);
   }
+  
 
 }

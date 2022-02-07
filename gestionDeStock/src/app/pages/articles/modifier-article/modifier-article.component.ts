@@ -49,8 +49,8 @@ export class ModifierArticleComponent implements OnInit {
       prixTTC :[this.article.prixTTC,[Validators.required]],
       categorieId :[this.article.categorieId,[Validators.required]],
       urlImage : [this.article.urlImage,[Validators.required]],
-      codeStock : [this.article.stock.codeStock,[Validators.required]],
-      quantite : [this.article.stock.quantite,[Validators.required]],
+      codeStock : [this.article.codeStock,[Validators.required]],
+      quantite : [this.article.quantite,[Validators.required]],
     })
   }
 
@@ -96,9 +96,8 @@ export class ModifierArticleComponent implements OnInit {
       newArticle.prixTTC = this.formModifierArticle.value.prixTTC
       newArticle.categorieId = this.formModifierArticle.value.categorieId
       newArticle.urlImage = this.formModifierArticle.value.urlImage
-      newArticle.stock  = new Stock('')
-      newArticle.stock.codeStock = this.formModifierArticle.value.codeStock
-      newArticle.stock.quantite = this.formModifierArticle.value.quantite
+      newArticle.codeStock = this.formModifierArticle.value.codeStock
+      newArticle.quantite = this.formModifierArticle.value.quantite
       this.apiArticleService.updateArticle(this.article.id,newArticle).subscribe(
             datas => {
               this.article = datas

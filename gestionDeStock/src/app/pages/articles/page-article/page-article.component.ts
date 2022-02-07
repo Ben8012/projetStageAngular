@@ -121,6 +121,6 @@ export class PageArticleComponent implements OnInit {
   }
 
   goPanier(){
-    this.router.navigate(['nouvellecommandeclient'])
+    this.router.navigate(['monpanier'])
   }
 }

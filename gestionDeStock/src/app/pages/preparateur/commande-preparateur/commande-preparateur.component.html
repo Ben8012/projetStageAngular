@@ -101,7 +101,7 @@
                 
                     <div class="col-md-1 custom-border-right mb-1 mt-1">
                         <div class="col-md-12 text-center">
-                            <h5>{{commande.article.stock.codeStock}} </h5>
+                            <h5>{{commande.article.codeStock}}</h5>
                         </div>
                     </div>
 
@@ -112,35 +112,49 @@
                     </div>
                 
                     <div class="col-md-3 mb-1 mt-1 custom-border-right">
-                        <div class="col-md-12 text-center">
-                            <h5>{{commande.article.stock.quantite}}</h5> 
+                        <div *ngIf="commande.article.quantiteStock > commande.article.quantiteStockMin"
+                             class="col-md-12 text-center">
+                            <h5>{{commande.article.quantiteStock}}</h5> 
+                        </div>
+                        <div *ngIf="commande.article.quantiteStock <= commande.article.quantiteStockMin" 
+                            style="color: red;"
+                             class="col-md-12 text-center">
+                            <h5>{{commande.article.quantiteStock}}</h5> 
                         </div>
                     </div>
                     <div class="col-md-2 mb-1 mt-1 custom-border-right">
-                        <div class="col-md-12 text-center">
+                        <div *ngIf="commande.article.quantiteStock > commande.article.quantiteStockMin"
+                                class="col-md-12 text-center">
                             <h5>{{commande.status}}</h5> 
+                        </div>
+                        <div *ngIf="commande.article.quantiteStock <= commande.article.quantiteStockMin"
+                             class="col-md-12 text-center"
+                             style="color: red;">
+                            <h5>A COMMANDER</h5> 
                         </div>
                     </div>
                 </div>
             </button>     
             <div class="col-md-2 mb-1 mt-1">
                 <div class="row">
-                    <div *ngIf="commande.status == status.prepa" class="col-md-12 text-center">
+                    <div *ngIf="commande.article.quantiteStock > commande.article.quantiteStockMin && commande.status == status.prepa"
+                        class="col-md-12 text-center">
                         <div class=" text-center">
-                            <button type="button" class="btn btn-link" style="text-decoration: none;" (click)="valider(commande.id)">
+                            <button type="button" class="btn btn-link" style="text-decoration: none;" (click)="valider(commande.id,commande.quantite)">
                                 <div> <i class="fas fa-check-circle"></i></div>
                                 <div>Pret</div>
                             </button>
                         </div> 
                     </div>
-                    <!-- <div *ngIf="commande.status == status.prepa" class="col-md-5 text-center">
+                    <div *ngIf="commande.article.quantiteStock <= commande.article.quantiteStockMin"
+                         class="col-md-12 text-center">
                         <div class=" text-center">
-                            <button type="button" class="btn btn-link" style="text-decoration: none; color: red;" (click)="annuler(commande.id)" >
-                                <div> <i class="fas fa-trash-alt"></i></div>
-                                <div>annuler</div>
+                            <button type="button" class="btn btn-link" style="text-decoration: none; color: red;" (click)="commander(commande.article.id)" >
+                                <div> <i class="fas fa-shopping-basket"></i></div>
+                                <div>Commander</div>
                             </button>
                         </div> 
-                    </div> -->
+                    </div>
                 </div>
             </div>
 

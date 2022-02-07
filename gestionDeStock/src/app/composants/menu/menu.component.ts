@@ -135,7 +135,7 @@ export class MenuComponent implements OnInit {
         id :'D70',
         icon:'fas fa-shopping-basket',
         titre:'Mon panier',
-        url:'nouvellecommandeclient',
+        url:'monpanier',
         }
       
       ]

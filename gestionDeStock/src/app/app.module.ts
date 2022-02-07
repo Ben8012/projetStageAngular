@@ -31,6 +31,7 @@ import { UserSessionService } from './services/user_session/user-session.service
 import { CommandePreparateurComponent } from './pages/preparateur/commande-preparateur/commande-preparateur.component';
 import { FooterComponent } from './composants/footer/footer.component';
 import { ModifierArticleComponent } from './pages/articles/modifier-article/modifier-article.component';
+import { NouvelleCmdFournisseurComponent } from './pages/commandes/nouvelle-cmd-fournisseur/nouvelle-cmd-fournisseur/nouvelle-cmd-fournisseur.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ModifierArticleComponent } from './pages/articles/modifier-article/modi
     CommandePreparateurComponent,
     FooterComponent,
     ModifierArticleComponent,
+    NouvelleCmdFournisseurComponent,
  
    
     

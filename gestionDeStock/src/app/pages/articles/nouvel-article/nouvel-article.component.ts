@@ -55,9 +55,8 @@ export class NouvelArticleComponent implements OnInit {
       newArticle.prixTTC = this.formNouvelArticle.value.prixTTC
       newArticle.categorieId = this.formNouvelArticle.value.categorieId
       newArticle.urlImage = this.formNouvelArticle.value.urlImage
-      newArticle.stock  = new Stock('')
-      newArticle.stock.codeStock = this.formNouvelArticle.value.codeStock
-      newArticle.stock.quantite = this.formNouvelArticle.value.quantite
+      newArticle.codeStock = this.formNouvelArticle.value.codeStock
+      newArticle.quantite = this.formNouvelArticle.value.quantite
       this.apiArticleService.addArticle(newArticle).subscribe()
         
     }

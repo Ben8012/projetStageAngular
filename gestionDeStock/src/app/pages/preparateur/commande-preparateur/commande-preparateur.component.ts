@@ -66,8 +66,8 @@ export class CommandePreparateurComponent implements OnInit {
     this.router.navigate([''])
   }
 
-  valider(id : number){
-    this.apiCommandeService.commandePrete(id ,this.user.id).subscribe(
+  valider(commandeId: number,quantite : number){
+    this.apiCommandeService.commandePrete(this.user.id, commandeId, quantite).subscribe(
       datas => {
         this.commandes = datas;
         this.commandes.map(
@@ -81,17 +81,8 @@ export class CommandePreparateurComponent implements OnInit {
     );
   }
 
-  annuler(id :number){
-    // this.apiCommandeService.annulerUneCommande(id ,this.user.id).subscribe(
-    //   datas => {
-    //     this.commandes = datas;
-    //     //console.log(this.commandes);
-        
-    //   }, error => {
-
-    //   }
-    // );
-    
+  commander(articleId : number){
+    this.router.navigate(['nouvellecommandefournisseur/'+articleId])
   }
 
 }
