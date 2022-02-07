@@ -45,7 +45,7 @@
         <div class="text-end">
           <button *ngIf="!user" [routerLink]="['/login']" type="button" class="btn btn-success me-2">Se connecter</button>
           <button *ngIf="!user" [routerLink]="['/inscrire']"type="button" class="btn btn-primary">S'inscire</button>
-          <button *ngIf="user" (click)="logout()" type="button" class="btn btn-danger">Déconnexion</button>
+          <button *ngIf="user" (click)="logout()" type="button" class="disconnect-button " >Déconnexion</button>
         </div>
       </div>
     </div>

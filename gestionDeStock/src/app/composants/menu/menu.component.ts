@@ -32,8 +32,8 @@ export class MenuComponent implements OnInit {
     },
     {
       id :'B2',
-      icon:'fas fa-boxes',
-      titre:'Articles',
+      icon:'fas fa-shopping-basket',
+      titre:'Commander',
       url:'',
       sousMenu:[
         {
@@ -42,12 +42,13 @@ export class MenuComponent implements OnInit {
           titre:'Commander',
           url:'articles',
         },
-        {
+        {  
           id :'B22',
-          icon:'fab fa-stack-overflow',
-          titre:'Mouvements du stock',
-          url:'movestock',
-        },
+          icon:'fas fa-shopping-basket',
+          titre:'Mon panier',
+          url:'monpanier',
+          },
+       
       ]
     },
     {
@@ -67,6 +68,12 @@ export class MenuComponent implements OnInit {
           icon:'fas fa-shopping-basket',
           titre:'Commandes a prépararer',
           url:'commandespreparateur',
+        },
+        {
+          id :'C33',
+          icon:'fas fa-plus-square',
+          titre:'Ajouter',
+          url:'nouveauclient/preparateur',
         },
       ]
     },
@@ -88,6 +95,12 @@ export class MenuComponent implements OnInit {
           titre:'Commandes fournisseurs',
           url:'commandesfournisseur',
         },
+        {
+          id :'C43',
+          icon:'fas fa-plus-square',
+          titre:'Ajouter',
+          url:'nouveauclient/fournisseur',
+        },
       ]
     },
     {
@@ -102,12 +115,12 @@ export class MenuComponent implements OnInit {
           titre:'Clients',
           url:'utilisateurs',
         },
-        {
-          id :'C52',
-          icon:'fas fa-shopping-basket',
-          titre:'Commandes clients',
-          url:'',
-        },
+        // {
+        //   id :'C52',
+        //   icon:'fas fa-shopping-basket',
+        //   titre:'Commandes clients',
+        //   url:'',
+        // },
       ]
     },
     {
@@ -118,25 +131,40 @@ export class MenuComponent implements OnInit {
       sousMenu:[
         {  
         id :'C60',
-        icon:'fas fa-tools',
-        titre:'Catégories',
-        url:'categories',
+        icon:'fas fa-plus-square',
+        titre:'Ajouter',
+        url:'nouvelcategorie',
         }
       
       ]
     },
     {
       id :'D7',
-      icon:'fas fa-shopping-basket',
-      titre:'Commandes',
+      icon:'fas fa-boxes',
+      titre:'Atricles',
       url:'',
       sousMenu:[
         {  
         id :'D70',
-        icon:'fas fa-shopping-basket',
-        titre:'Mon panier',
-        url:'monpanier',
+        icon:'fas fa-plus-square',
+        titre:'Ajouter',
+        url:'nouvelarticle',
         }
+      
+      ]
+    },
+    {
+      id :'E8',
+      icon:'fab fa-stack-overflow',
+      titre:'Stock',
+      url:'',
+      sousMenu:[
+        {
+          id :'E80',
+          icon:'fas fa-eye',
+          titre:'Voir',
+          url:'movestock',
+        },
       
       ]
     }
