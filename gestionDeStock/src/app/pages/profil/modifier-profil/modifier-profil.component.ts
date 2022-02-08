@@ -8,9 +8,9 @@ import { UserSessionService } from 'src/app/services/user_session/user-session.s
 import { DateUtils } from 'src/app/utils/date.utils';
 
 @Component({
-  selector: 'app-nouvel-utilisateur',
-  templateUrl: './nouvel-utilisateur.component.html',
-  styleUrls: ['./nouvel-utilisateur.component.scss']
+  selector: 'app-modifier-profil',
+  templateUrl: './modifier-profil.component.html',
+  styleUrls: ['./modifier-profil.component.scss']
 })
 export class NouvelUtilisateurComponent implements OnInit {
 

@@ -1,43 +1,40 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NouveauClientFournisseurComponent } from './pages/fournisseurs/nouveau-preparateur-fournisseur/nouveau-client-fournisseur.component';
-import { NouvelleCmdClientFournisseurComponent } from './pages/commandes/nouvelle-cmd-client/nouvelle-cmd-client-fournisseur.component';
+import { NouveauFournisseurComponent } from './pages/fournisseurs/nouveau-fournisseur/nouveau-fournisseur.component';
 import { NouvelArticleComponent } from './pages/articles/nouvel-article/nouvel-article.component';
 import { PageArticleComponent } from './pages/articles/page-article/page-article.component';
 import { NouvelleCategorieComponent } from './pages/categories/nouvelle-categorie/nouvelle-categorie.component';
 import { PageCategorieComponent } from './pages/categories/page-categorie/page-categorie.component';
-import { PageClientComponent } from './pages/preparateur/page-client/page-preparateur.component';
 import { PageFournisseursComponent } from './pages/fournisseurs/page-fournisseurs/page-fournisseurs.component';
 import { PageMovestockComponent } from './pages/movstock/page-movestock/page-movestock.component';
-import { PageCmdClientFournisseurComponent } from './pages/commandes/page-cmd-client/page-cmd-client-fournisseur.component';
-import { PageDashboardComponent } from './pages/dashboard/page-dashboard.component';
 import { PageInscriptionComponent } from './pages/inscription/page-inscription.component';
 import { PageLoginComponent } from './pages/login/page-login.component';
 import { PageStatistiquesComponent } from './pages/statistiques/page-statistiques.component';
 import { ChangerMotDePasseComponent } from './pages/profil/changer-mot-de-passe/changer-mot-de-passe.component';
 import { PageProfilComponent } from './pages/profil/page-profil/page-profil.component';
-import { NouvelUtilisateurComponent } from './pages/profil/modifier-profil/nouvel-utilisateur.component';
-import { PageUtilisateursComponent } from './pages/clients/page-clients/page-utilisateurs.component';
+import { NouvelUtilisateurComponent } from './pages/profil/modifier-profil/modifier-profil.component';
+import { PageClientComponent } from './pages/clients/page-clients/page-clients.component';
 import { ApplicationGuardService } from './services/guard/application-guard.service';
 import { CommandePreparateurComponent } from './pages/preparateur/commande-preparateur/commande-preparateur.component';
 import { ModifierArticleComponent } from './pages/articles/modifier-article/modifier-article.component';
 import { ResolverModifierArticleService } from './services/resolvers/modifier-artcile.resolver';
-import { NouvelleCmdFournisseurComponent } from './pages/commandes/nouvelle-cmd-fournisseur/nouvelle-cmd-fournisseur/nouvelle-cmd-fournisseur.component';
+import { NouvelleCmdFournisseurComponent } from './pages/commandes/nouvelle-cmd-fournisseur/nouvelle-cmd-fournisseur.component';
 import { ResolverNouvelleCommandeFournisseurService } from './services/resolvers/nouvelle-cmd-fournisseur.resolver';
+import { PageDashboardComponent } from './composants/dashboard/page-dashboard.component';
+import { CommandesFournisseursComponent } from './pages/fournisseurs/commandes-fournisseurs/commandes-fournisseurs.component';
+import { PanierClientComponent } from './pages/clients/panier-client/panier-client.component';
+import { NouveauPreparateurComponent } from './pages/preparateur/nouveau-preparateur/nouveau-preparateur.component';
+import { PagePreparateurComponent } from './pages/preparateur/page-preparateur/page-preparateur.component';
 
 const routes: Routes = [
-
   { path: 'login', component : PageLoginComponent },
   { path: 'inscrire', component : PageInscriptionComponent },
   { 
     path: '', 
     component : PageDashboardComponent,
+
     children :[
-      {
-        path : 'statistiques',
-        component : PageStatistiquesComponent,
-        canActivate : [ApplicationGuardService]
-      },
+      
       {
         path:'articles',
         component : PageArticleComponent,
@@ -56,69 +53,49 @@ const routes: Routes = [
         component : ModifierArticleComponent,
         canActivate : [ApplicationGuardService]
       },
-      {
-        path:'movestock', 
-        component : PageMovestockComponent,
-        canActivate : [ApplicationGuardService]
-      },
+     
       {
         path:'preparateurs', 
-        component : PageClientComponent,
+        component : PagePreparateurComponent,
         canActivate : [ApplicationGuardService]
       },
       {
-        path:'nouveauclient/:id', 
-        component : NouveauClientFournisseurComponent,
+        path:'nouveaupreparateur',
+        component : NouveauPreparateurComponent,
         canActivate : [ApplicationGuardService],
-        data:{
-          origin :'client'
-        }
       },
+
       {
-        path:'commandesclient', 
-        component : PageCmdClientFournisseurComponent,
-        canActivate : [ApplicationGuardService],
-        data:{
-          origin :'client'
-        }
+        path:'commandespreparateur', 
+        component : CommandePreparateurComponent,
+        canActivate : [ApplicationGuardService]
       },
-      {
-        path:'monpanier', 
-        component : NouvelleCmdClientFournisseurComponent,
-        canActivate : [ApplicationGuardService],
-        data:{
-          origin :'client'
-        }
-      },
+     
       {
         path:'fournisseurs', 
         component : PageFournisseursComponent,
         canActivate : [ApplicationGuardService]
       },
       {
-        path:'nouveaufournisseur/:id',
-        component : NouveauClientFournisseurComponent,
+        path:'nouveaufournisseur', 
+        component : NouveauFournisseurComponent,
         canActivate : [ApplicationGuardService],
-        data:{
-          origin :'fournisseur'
-        }
       },
+     
       {
         path:'commandesfournisseur', 
-        component : PageCmdClientFournisseurComponent,
-        canActivate : [ApplicationGuardService],
-        data:{
-          origin :'fournisseur'
-        }
+        component : CommandesFournisseursComponent,
+        canActivate : [ApplicationGuardService]
       },
       {
-        path:'monpanier', 
-        component : NouvelleCmdClientFournisseurComponent,
-        canActivate : [ApplicationGuardService],
-        data:{
-          origin :'fournisseur'
-        }
+        path:'nouvellecommandefournisseur/:id', 
+        resolve :{
+          datas : ResolverNouvelleCommandeFournisseurService
+        },
+        component : NouvelleCmdFournisseurComponent,
+        canActivate : [ApplicationGuardService]
       },
+      
       {
         path:'categories', 
         component : PageCategorieComponent,
@@ -130,9 +107,14 @@ const routes: Routes = [
         canActivate : [ApplicationGuardService]
       },
       {
-        path:'utilisateurs', 
-        component : PageUtilisateursComponent,
+        path:'client', 
+        component : PageClientComponent,
         canActivate : [ApplicationGuardService]
+      },
+      {
+        path:'monpanier', 
+        component : PanierClientComponent,
+        canActivate : [ApplicationGuardService],
       },
       {
         path:'nouvelutilisateur', 
@@ -155,18 +137,16 @@ const routes: Routes = [
         canActivate : [ApplicationGuardService]
       },
       {
-        path:'commandespreparateur', 
-        component : CommandePreparateurComponent,
+        path:'movestock', 
+        component : PageMovestockComponent,
         canActivate : [ApplicationGuardService]
       },
       {
-        path:'nouvellecommandefournisseur/:id', 
-        resolve :{
-          datas : ResolverNouvelleCommandeFournisseurService
-        },
-        component : NouvelleCmdFournisseurComponent,
+        path : 'statistiques',
+        component : PageStatistiquesComponent,
         canActivate : [ApplicationGuardService]
       },
+      
     ]
   },
 

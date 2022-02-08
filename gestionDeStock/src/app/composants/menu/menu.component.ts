@@ -48,7 +48,6 @@ export class MenuComponent implements OnInit {
           titre:'Mon panier',
           url:'monpanier',
           },
-       
       ]
     },
     {
@@ -66,14 +65,14 @@ export class MenuComponent implements OnInit {
         {
           id :'C32',
           icon:'fas fa-shopping-basket',
-          titre:'Commandes a prépararer',
+          titre:'A faire',
           url:'commandespreparateur',
         },
         {
           id :'C33',
           icon:'fas fa-plus-square',
           titre:'Ajouter',
-          url:'nouveauclient/preparateur',
+          url:'nouveaupreparateur',
         },
       ]
     },
@@ -92,14 +91,14 @@ export class MenuComponent implements OnInit {
         {
           id :'C42',
           icon:'fas fa-truck',
-          titre:'Commandes fournisseurs',
+          titre:'Commandes',
           url:'commandesfournisseur',
         },
         {
           id :'C43',
           icon:'fas fa-plus-square',
           titre:'Ajouter',
-          url:'nouveauclient/fournisseur',
+          url:'nouveaufournisseur',
         },
       ]
     },
@@ -113,14 +112,8 @@ export class MenuComponent implements OnInit {
           id :'C51',
           icon:'fas fa-users',
           titre:'Clients',
-          url:'utilisateurs',
+          url:'client',
         },
-        // {
-        //   id :'C52',
-        //   icon:'fas fa-shopping-basket',
-        //   titre:'Commandes clients',
-        //   url:'',
-        // },
       ]
     },
     {

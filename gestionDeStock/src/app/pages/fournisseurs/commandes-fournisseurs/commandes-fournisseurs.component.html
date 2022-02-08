@@ -1,0 +1,205 @@
+<div class="col ">
+    <div class="col-md-12 p-3">
+        <div class="col-md-12 mb-3 ">
+            <h2>Les commandes faites </h2>
+        </div>
+     
+           
+        <!-- <div class="row p-3 custom-border">
+            <div class="col-md-8 custom-border-right">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
+                        <div class="col-md-11">{{user.nom}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"><i class="fas fa-info-circle custom-icon"></i></div>
+                        <div class="col-md-11">{{user.prenom}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"><i class="fas fa-phone-alt custom-icon"></i></div>
+                        <div class="col-md-11">{{user.email}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" style="text-align: center;">
+                <img src="assets/images/client.jpg" class="rounded-circle" width="100px" height="100px"/>
+            </div>
+        </div> -->
+    </div>
+    <div class="col-md-12 p-3">
+        <div class="row p-3 ml-2 mr-2">
+            <div class="row mb-1 mr-0  custom-border">
+    
+                <div class="col-md-1 custom-border-right mb-1 mt-1">
+                    <div class="col-md-12 text-center">
+                        <h5>image</h5>
+                    </div>
+                </div>
+                <div class="col-md-2 custom-border-right mb-1 mt-1">
+                    <div class="col-md-12 text-center">
+                        <h5>Code</h5>
+                    </div>
+                </div>
+            
+                <div class="col-md-1 custom-border-right mb-1 mt-1">
+                    <div class="col-md-12 text-center">
+                        <h5>Stock</h5>
+                    </div>
+                 </div>
+            
+                <div class="col-md-2 mb-1 mt-1 custom-border-right">
+                    <div class="col-md-12 text-center">
+                        <h5>Quantité demandée</h5> 
+                    </div>
+                </div>
+
+                <div class="col-md-2 mb-1 mt-1 custom-border-right">
+                    <div class="col-md-12 text-center">
+                        <h5>Date de la commande</h5> 
+                    </div>
+                </div>
+            
+                <div class="col-md-2 mb-1 mt-1 custom-border-right">
+                    <div class="col-md-12 text-center">
+                        <h5>Status</h5> 
+                    </div>
+                </div>
+                <div class="col-md-2 mb-1 mt-1">
+                    <div class="col-md-12 text-center">
+                        <h5>Actions</h5> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-2 custom-border" *ngFor="let commande of commandes">
+
+        <div class="accordion row" id="accordion">
+            <div class="card-header" id="client{{commande.id}}"></div>
+            <button class="btn btn-link btn-block col-md-10" 
+                    style="text-decoration: none;" 
+                    type="button" 
+                    data-toggle="collapse" 
+                    [attr.data-target]="'#collapse'+commande.id" 
+                    aria-expanded="true" 
+                    aria-controls="collapseOne">
+
+
+
+
+                <div class="row mb-1 mr-0 p-1  " >
+                    <div class="col-md-1 custom-border-right text-center mb-1 mt-1">
+                        <img [src]="'assets/images/'+commande.article.urlImage" width="50px" height="50"/>
+                    </div>
+                    <div class="col-md-3 custom-border-right mb-1 mt-1">
+                        <div class="col-md-12 text-center">
+                            <h5>{{commande.article.codeArticle}}</h5>
+                        </div>
+                    </div>
+                
+                    <div class="col-md-1 custom-border-right mb-1 mt-1">
+                        <div class="col-md-12 text-center">
+                            <h5>{{commande.article.codeStock}}</h5>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 custom-border-right mb-1 mt-1">
+                        <div class="col-md-12 text-center">
+                            <h5> {{commande.quantite}}</h5>
+                        </div>
+                    </div>
+                
+                    <div class="col-md-3 mb-1 mt-1 custom-border-right">
+                        <div  class="col-md-12 text-center">
+                            <h5>{{commande.createdAt}}</h5> 
+                        </div>
+                       
+                    </div>
+                    <div class="col-md-2 mb-1 mt-1 custom-border-right">
+                        <div *ngIf="commande.article.quantiteStock > commande.article.quantiteStockMin"
+                                class="col-md-12 text-center">
+                            <h5>{{commande.status}}</h5> 
+                        </div>
+                        <div *ngIf="commande.article.quantiteStock <= commande.article.quantiteStockMin"
+                             class="col-md-12 text-center"
+                             style="color: red;">
+                            <h5>A COMMANDER</h5> 
+                        </div>
+                    </div>
+                </div>
+            </button>     
+            <div class="col-md-2 mb-1 mt-1">
+                <div class="row">
+                    <div *ngIf="commande.article.quantiteStock > commande.article.quantiteStockMin && commande.status == status.prepa"
+                        class="col-md-12 text-center">
+                        <div class=" text-center">
+                            <button type="button" class="btn btn-link" style="text-decoration: none;" (click)="valider(commande.id,commande.quantite)">
+                                <div> <i class="fas fa-check-circle"></i></div>
+                                <div>Pret</div>
+                            </button>
+                        </div> 
+                    </div>
+                    <div 
+                         class="col-md-12 text-center">
+                        <div class=" text-center">
+                            <button type="button" class="btn btn-link" style="text-decoration: none; color: red;" (click)="commander(commande.article.id)" >
+                                <div> <i class="fas fa-shopping-basket"></i></div>
+                                <div>Commander</div>
+                            </button>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+
+            <div id="collapse{{commande.id}}" 
+                    class="collapse" 
+                    [attr.aria-labelledby]="'#client'+commande.id" 
+                    data-parent="#accordion" 
+                    style="max-height: 300px; ">
+                   
+
+                <div class="row mb-1 mr-0  custom-border">
+                    <div class="col-md-4 p-4 custom-border-right mb-1 mt-1 text-center">
+                        <div class="row">
+                            <div class="col-md-12 text-center"><h5>Nom du fournisseur</h5></div>
+                            <div class="col-md-12 text-center">{{commande.fournisseur.nom}} {{commande.fournisseur.prenom}}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-2 custom-border-right text-center">
+                        <div class="row">
+                            <div class="col-md-12"><h5>Adresse du fournisseur</h5></div>
+                            <div class="col-md-12">{{commande.fournisseur.adresse.rue}} {{commande.fournisseur.adresse.numero}} </div>
+                            <div class="col-md-12">{{commande.fournisseur.adresse.codePostal}} {{commande.fournisseur.adresse.ville}} ({{commande.fournisseur.adresse.pays}}) </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-4 mb-1 mt-1 text-center">
+                        <div class="row">
+                            <div class="col-md-12"><h5>E-mail du fournisseur</h5></div>
+                            <div class="col-md-12">{{commande.fournisseur.email}} </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div> 
+
+    <!-- <div class="col-md-12" style="text-align: end;">
+        <button class="btn btn-danger m-4"
+                (click)="cancel()">
+            <i class="fas fa-ban"></i>&nbsp;
+            Retour
+        </button>
+        <button class="btn btn-primary m-4"
+                (click)="validerToutPret()">
+            <i class="fas fa-save"></i>&nbsp;
+            Validez tout
+        </button>
+    </div>
+    <div class="row mb-3" style="text-align: center;">
+        <app-pagination></app-pagination>
+    </div> -->
+
+</div>
+

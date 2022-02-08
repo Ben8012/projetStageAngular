@@ -10,7 +10,7 @@ import { RoleUtilisateurEnum } from 'src/app/services/enums/role-utilisateur.enu
   templateUrl: './page-preparateur.component.html',
   styleUrls: ['./page-preparateur.component.scss']
 })
-export class PageClientComponent implements OnInit {
+export class PagePreparateurComponent implements OnInit {
 
   public allPreparateurs: UserWithAdresse[]=[]
   roles = RoleUtilisateurEnum 
@@ -33,8 +33,7 @@ export class PageClientComponent implements OnInit {
   }
 
   nouveauPreparateur():void{
-    this.id = 'preparateur'
-    this.router.navigate(['nouveauclient/'+this.id])
+    this.router.navigate(['nouveaupreparateur'])
   }
 
   getAllPreparateurs(){

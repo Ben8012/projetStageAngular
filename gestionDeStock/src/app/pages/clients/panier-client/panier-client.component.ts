@@ -8,11 +8,11 @@ import { StatusCommandeEnum } from 'src/app/services/enums/status-commande.enum'
 import { UserSessionService } from 'src/app/services/user_session/user-session.service';
 
 @Component({
-  selector: 'app-nouvelle-cmd-client-fournisseur',
-  templateUrl: './nouvelle-cmd-client-fournisseur.component.html',
-  styleUrls: ['./nouvelle-cmd-client-fournisseur.component.scss']
+  selector: 'app-panier-client',
+  templateUrl: './panier-client.component.html',
+  styleUrls: ['./panier-client.component.scss']
 })
-export class NouvelleCmdClientFournisseurComponent implements OnInit {
+export class PanierClientComponent implements OnInit {
 
   origin='';
   public user : AuthUser = new AuthUser("");

@@ -63,11 +63,11 @@ export class NouvelleCmdFournisseurComponent implements OnInit {
       this.apiCommandeService.ajouterPanier(newCommande).subscribe()
         
     }
-    //this.router.navigate(['articles']);
+    this.router.navigate(['commandespreparateur']);
   }
 
   cancelClick():void{
-    this.router.navigate(['articles']);
+    this.router.navigate(['commandespreparateur']);
   }
 
   getFournisseurByArticle(){

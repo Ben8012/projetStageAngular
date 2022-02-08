@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NouvelUtilisateurComponent } from './nouvel-utilisateur.component';
+import { NouvelUtilisateurComponent } from './modifier-profil.component';
 
 describe('NouvelUtilisateurComponent', () => {
   let component: NouvelUtilisateurComponent;

@@ -8,11 +8,11 @@ import { RoleUtilisateurEnum } from 'src/app/services/enums/role-utilisateur.enu
 import { DateUtils } from 'src/app/utils/date.utils';
 
 @Component({
-  selector: 'app-page-utilisateurs',
-  templateUrl: './page-utilisateurs.component.html',
-  styleUrls: ['./page-utilisateurs.component.scss']
+  selector: 'app-page-clients',
+  templateUrl: './page-clients.component.html',
+  styleUrls: ['./page-clients.component.scss']
 })
-export class PageUtilisateursComponent implements OnInit {
+export class PageClientComponent implements OnInit {
 
   public allClients: UserWithAdresse[]=[]
   roles = RoleUtilisateurEnum 

@@ -32,9 +32,7 @@ export class PageFournisseursComponent implements OnInit {
   }
 
   nouveauFournisseur():void{
-    this.id = 'fournisseur'
-    this.router.navigate(['nouveauclient/'+this.id])
-    //this.router.navigate(['nouveaufournisseur'])
+    this.router.navigate(['nouveaufournisseur'])
   }
 
   getAllFournisseurs(){
