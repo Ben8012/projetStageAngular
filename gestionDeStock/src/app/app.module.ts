@@ -27,11 +27,13 @@ import { UserSessionService } from './services/user_session/user-session.service
 import { CommandePreparateurComponent } from './pages/preparateur/commande-preparateur/commande-preparateur.component';
 import { FooterComponent } from './composants/footer/footer.component';
 import { ModifierArticleComponent } from './pages/articles/modifier-article/modifier-article.component';
-import { NouvelleCmdFournisseurComponent } from './pages/commandes/nouvelle-cmd-fournisseur/nouvelle-cmd-fournisseur.component';
+import { NouvelleCmdFournisseurComponent } from './pages/fournisseurs/nouvelle-cmd-fournisseur/nouvelle-cmd-fournisseur.component';
 import { PageDashboardComponent } from './composants/dashboard/page-dashboard.component';
 import { CommandesFournisseursComponent } from './pages/fournisseurs/commandes-fournisseurs/commandes-fournisseurs.component';
 import { NouveauPreparateurComponent } from './pages/preparateur/nouveau-preparateur/nouveau-preparateur.component';
 import { PagePreparateurComponent } from './pages/preparateur/page-preparateur/page-preparateur.component';
+import { CommonModule } from '@angular/common';
+import { PanierClientComponent} from './pages/clients/panier-client/panier-client.component';
 
 
 @NgModule({
@@ -63,7 +65,8 @@ import { PagePreparateurComponent } from './pages/preparateur/page-preparateur/p
     CommandesFournisseursComponent,
     NouveauPreparateurComponent,
     NouveauFournisseurComponent,
-    PagePreparateurComponent
+    PagePreparateurComponent,
+    PanierClientComponent
  
    
     
@@ -73,7 +76,9 @@ import { PagePreparateurComponent } from './pages/preparateur/page-preparateur/p
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CommonModule,
+    
   ],
   providers: [
     {

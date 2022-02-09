@@ -5,6 +5,7 @@ import { Commande } from 'src/app/models/commande/commande';
 import { ApiCommandeService } from 'src/app/services/api/api-commande.service';
 import { StatusCommandeEnum } from 'src/app/services/enums/status-commande.enum';
 import { UserSessionService } from 'src/app/services/user_session/user-session.service';
+import { DateUtils } from 'src/app/utils/date.utils';
 
 @Component({
   selector: 'app-commandes-fournisseurs',
@@ -33,7 +34,10 @@ export class CommandesFournisseursComponent implements OnInit {
   getAllCommandeFournisseur(){
     this.apiCommandeService.getAllCommandeFournisseur().subscribe(
       datas => {
+       
         this.commandes = datas;
+        this.commandes.map(c => DateUtils.format(new Date(c.createdAt)))
+       
         console.log(this.commandes);
       
       }, error => {

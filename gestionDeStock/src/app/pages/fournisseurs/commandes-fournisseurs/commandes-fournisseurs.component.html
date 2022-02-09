@@ -31,12 +31,18 @@
         <div class="row p-3 ml-2 mr-2">
             <div class="row mb-1 mr-0  custom-border">
     
-                <div class="col-md-1 custom-border-right mb-1 mt-1">
+                <div class="col-md-2 custom-border-right mb-1 mt-1">
                     <div class="col-md-12 text-center">
                         <h5>image</h5>
                     </div>
                 </div>
                 <div class="col-md-2 custom-border-right mb-1 mt-1">
+                    <div class="col-md-12 text-center">
+                        <h5>Nom</h5>
+                    </div>
+                </div>
+            
+                <div class="col-md-1 custom-border-right mb-1 mt-1">
                     <div class="col-md-12 text-center">
                         <h5>Code</h5>
                     </div>
@@ -60,16 +66,16 @@
                     </div>
                 </div>
             
-                <div class="col-md-2 mb-1 mt-1 custom-border-right">
+                <div class="col-md-2 mb-1 mt-1">
                     <div class="col-md-12 text-center">
-                        <h5>Status</h5> 
+                        <h5>Société</h5> 
                     </div>
                 </div>
-                <div class="col-md-2 mb-1 mt-1">
+                <!-- <div class="col-md-2 mb-1 mt-1">
                     <div class="col-md-12 text-center">
                         <h5>Actions</h5> 
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -77,8 +83,8 @@
     <div class="row m-2 custom-border" *ngFor="let commande of commandes">
 
         <div class="accordion row" id="accordion">
-            <div class="card-header" id="client{{commande.id}}"></div>
-            <button class="btn btn-link btn-block col-md-10" 
+            <div id="client{{commande.id}}"></div>
+            <button class="btn btn-link btn-block col-md-12" 
                     style="text-decoration: none;" 
                     type="button" 
                     data-toggle="collapse" 
@@ -90,15 +96,20 @@
 
 
                 <div class="row mb-1 mr-0 p-1  " >
-                    <div class="col-md-1 custom-border-right text-center mb-1 mt-1">
+                    <div class="col-md-2 custom-border-right text-center mb-1 mt-1">
                         <img [src]="'assets/images/'+commande.article.urlImage" width="50px" height="50"/>
                     </div>
-                    <div class="col-md-3 custom-border-right mb-1 mt-1">
+                    <div class="col-md-2 custom-border-right mb-1 mt-1">
+                        <div class="col-md-12 text-center">
+                            <h5>{{commande.article.designation}}</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-1 custom-border-right mb-1 mt-1">
                         <div class="col-md-12 text-center">
                             <h5>{{commande.article.codeArticle}}</h5>
                         </div>
                     </div>
-                
+                   
                     <div class="col-md-1 custom-border-right mb-1 mt-1">
                         <div class="col-md-12 text-center">
                             <h5>{{commande.article.codeStock}}</h5>
@@ -111,26 +122,25 @@
                         </div>
                     </div>
                 
-                    <div class="col-md-3 mb-1 mt-1 custom-border-right">
+                    <div class="col-md-2 mb-1 mt-1 custom-border-right">
                         <div  class="col-md-12 text-center">
                             <h5>{{commande.createdAt}}</h5> 
                         </div>
                        
                     </div>
-                    <div class="col-md-2 mb-1 mt-1 custom-border-right">
-                        <div *ngIf="commande.article.quantiteStock > commande.article.quantiteStockMin"
-                                class="col-md-12 text-center">
-                            <h5>{{commande.status}}</h5> 
+                    <div class="col-md-2 mb-1 mt-1">
+                        <div class="col-md-12 text-center">
+                            <h5>{{commande.fournisseur.societe}}</h5> 
                         </div>
-                        <div *ngIf="commande.article.quantiteStock <= commande.article.quantiteStockMin"
+                        <!-- <div *ngIf="commande.article.quantiteStock <= commande.article.quantiteStockMin"
                              class="col-md-12 text-center"
                              style="color: red;">
                             <h5>A COMMANDER</h5> 
-                        </div>
-                    </div>
+                        </div> -->
+                    </div> 
                 </div>
             </button>     
-            <div class="col-md-2 mb-1 mt-1">
+            <!-- <div class="col-md-2 mb-1 mt-1">
                 <div class="row">
                     <div *ngIf="commande.article.quantiteStock > commande.article.quantiteStockMin && commande.status == status.prepa"
                         class="col-md-12 text-center">
@@ -141,8 +151,7 @@
                             </button>
                         </div> 
                     </div>
-                    <div 
-                         class="col-md-12 text-center">
+                    <div class="col-md-12 text-center">
                         <div class=" text-center">
                             <button type="button" class="btn btn-link" style="text-decoration: none; color: red;" (click)="commander(commande.article.id)" >
                                 <div> <i class="fas fa-shopping-basket"></i></div>
@@ -151,7 +160,7 @@
                         </div> 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div id="collapse{{commande.id}}" 
                     class="collapse" 

@@ -22,8 +22,8 @@ export class ApiCommandeService {
     return this.http.post(apiLink+'ajouterpanier',ajouterPanier);
   }
 
-  getCommandeByUser(id : number): Observable<Commande[]>{
-    return this.http.get<Commande[]>(apiLink+'commandebyid/'+id)
+  getCommandeByUser(id : number): Observable<any[]>{
+    return this.http.get<any[]>(apiLink+'commandebyid/'+id)
   }
 
   validerUneCommande(id : number, userId : number):Observable<any[]>{

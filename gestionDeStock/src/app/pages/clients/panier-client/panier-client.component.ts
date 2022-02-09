@@ -14,7 +14,6 @@ import { UserSessionService } from 'src/app/services/user_session/user-session.s
 })
 export class PanierClientComponent implements OnInit {
 
-  origin='';
   public user : AuthUser = new AuthUser("");
   public commandes : Commande[]=[]; 
   public total : number = 0
@@ -22,16 +21,12 @@ export class PanierClientComponent implements OnInit {
   public isNoValid : boolean = true
 
   constructor(
-    private activatedRoute : ActivatedRoute,
     private apiCommandeService : ApiCommandeService,
     private userSessionService : UserSessionService,
     private router : Router
   ) { }
 
   ngOnInit(): void {
-    // this.activatedRoute.data.subscribe(data =>{
-    //   this.origin = data.origin;
-    // })
 
     this.userSessionService.user$.subscribe((user : any) => {
       this.user  = user;
@@ -41,7 +36,7 @@ export class PanierClientComponent implements OnInit {
   }
 
   getCommandeByUser(){
-    console.log(this.user.id)
+    console.log('user id :'+this.user.id)
     this.apiCommandeService.getCommandeByUser(this.user.id).subscribe(
       datas => {
         this.commandes = datas;

@@ -18,7 +18,7 @@ import { ApplicationGuardService } from './services/guard/application-guard.serv
 import { CommandePreparateurComponent } from './pages/preparateur/commande-preparateur/commande-preparateur.component';
 import { ModifierArticleComponent } from './pages/articles/modifier-article/modifier-article.component';
 import { ResolverModifierArticleService } from './services/resolvers/modifier-artcile.resolver';
-import { NouvelleCmdFournisseurComponent } from './pages/commandes/nouvelle-cmd-fournisseur/nouvelle-cmd-fournisseur.component';
+import { NouvelleCmdFournisseurComponent } from './pages/fournisseurs/nouvelle-cmd-fournisseur/nouvelle-cmd-fournisseur.component';
 import { ResolverNouvelleCommandeFournisseurService } from './services/resolvers/nouvelle-cmd-fournisseur.resolver';
 import { PageDashboardComponent } from './composants/dashboard/page-dashboard.component';
 import { CommandesFournisseursComponent } from './pages/fournisseurs/commandes-fournisseurs/commandes-fournisseurs.component';
@@ -30,9 +30,9 @@ const routes: Routes = [
   { path: 'login', component : PageLoginComponent },
   { path: 'inscrire', component : PageInscriptionComponent },
   { 
-    path: '', 
+    path: '',
     component : PageDashboardComponent,
-
+    canActivate : [ApplicationGuardService],
     children :[
       
       {
@@ -150,7 +150,7 @@ const routes: Routes = [
     ]
   },
 
-  { path : '**' , redirectTo : ''}
+  //{ path : '**' , redirectTo : ''}
 ];
 
 @NgModule({
